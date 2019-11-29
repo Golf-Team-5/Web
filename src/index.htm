@@ -19,17 +19,20 @@
         <![endif]-->
         <div class="Container">
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                <a id="RNGolf" class="navbar-brand" href="MainPage.html">RNGolf</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse Right" id="navbarNavAltMarkup">
-                    <div class="navbar-nav Right">
-                    <a class="nav-item nav-link" href="#"><span class="fa fa-book fa-2x icon-color"></span></a>
-                    <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a>
                     </div>
+                    <ul class="nav navbar-nav navbar-right">
+                    <li>                    
+                        <a class="nav-item nav-link pull-right" href="#"><span class="fa fa-book fa-2x icon-color"></span></a>
+                    </li>
+                    <li>                    
+                        <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                    </li>
+                    </ul>
                 </div>
-            </nav>
+            </nav> 
         </div>       
         <div class="container-fluid">
             <!--Weather picture-->
@@ -37,9 +40,9 @@
 
             </div>
             <!--Play-->
-            <div class="col-md-8 col-lg-8 float">
+            <div class="col-md-7 col-lg-7 float">
                 <button id="playButton" class="btn-lg btn-danger">
-                    <a href="PlayerSession.html">Play</a>
+                    <a href="playerPage.htm">Play</a>
                 </button>
             </div>
             <!--Leaderboard-->
@@ -56,7 +59,7 @@
                         <tbody>
                             <tr>
                             <th scope="row">1</th>
-                            <td>JON</td>
+                            <td>CEL</td>
                             <td>2</td>
                             <td>1103</td>
                             </tr>
@@ -80,7 +83,7 @@
                             </tr>
                             <tr>
                             <th scope="row">5</th>
-                            <td>CEL</td>
+                            <td>JON</td>
                             <td>89</td>
                             <td>375</td>
                             </tr>
@@ -89,26 +92,51 @@
                         </table>
             </div>
         </div>
-        <div id="news" class="Container-fluid">
-                <!--Breaking news-->
-                <div>
-                    <p>
-    
-                    </p>
+        
+        <div class="container-fluid" style="position: fixed; bottom: 0;">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" style="background-color:darkslategray; width:100%;">
+                    <div class="carousel-item active">
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                        <p>Dine sko er i brænd!</p>
+                    </div>
                 </div>
-                <div>
-                
-                </div>
-        </div>
-        <footer id="footer" class="navbar navbar-expand-lg navbar-light bg-dark">
-            <a class="navbar-brand" href="#">RNGolf</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse Right" id="navbarNavAltMarkup">
-
             </div>
-        </footer>
+        </div>
+        
+        <!--<footer id="footer" class="container-fluid">
+           <ul class="list-group list-group-horizontal-md" style="background-color:green;">
+               <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:blue; width:100%;">
+                   <ul class="list-group">
+                       <li>frg</li>
+                   </ul>
+               </li>
+               <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:lightblue; width:100%;">
+                    <ul class="list-group">
+                        <li>wed</li>
+                    </ul>
+                </li>
+                <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:darkblue; width:100%;">
+                    <ul class="list-group">
+                        <li>frfrg</li>
+                    </ul>
+                </li>
+           </ul>
+        </footer>-->
           
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

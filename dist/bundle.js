@@ -114,6 +114,17 @@ element.innerHTML = greeter(user);
 
 /***/ }),
 
+/***/ "./src/playerPage.htm":
+/*!****************************!*\
+  !*** ./src/playerPage.htm ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "playerPage.htm";
+
+/***/ }),
+
 /***/ "./src/scss/styles.scss":
 /*!******************************!*\
   !*** ./src/scss/styles.scss ***!
@@ -126,13 +137,14 @@ module.exports = __webpack_require__.p + "bundle.css";
 /***/ }),
 
 /***/ 0:
-/*!**********************************************************************!*\
-  !*** multi ./src/index.htm ./src/scss/styles.scss ./src/js/index.ts ***!
-  \**********************************************************************/
+/*!*******************************************************************************************!*\
+  !*** multi ./src/index.htm ./src/playerPage.htm ./src/scss/styles.scss ./src/js/index.ts ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/index.htm */"./src/index.htm");
+__webpack_require__(/*! ./src/playerPage.htm */"./src/playerPage.htm");
 __webpack_require__(/*! ./src/scss/styles.scss */"./src/scss/styles.scss");
 module.exports = __webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
 

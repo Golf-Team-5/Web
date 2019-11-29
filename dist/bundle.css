@@ -4,14 +4,17 @@
 
 body {
   background-image: url("/img/golf-bg-forside.jpg");
-  width: 100%;
-  height: 100%; }
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+#brand {
+  color: white; }
 
 .float {
   float: left; }
 
 #leaderBoard {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 120px; }
 
 #footer {
@@ -25,19 +28,18 @@ body {
 .icon-color {
   color: white; }
 
-.Right {
-  float: right; }
-
 #playButton {
   width: 250px;
-  margin: 400px 0 0 600px; }
+  margin: 300px 0 0 500px; }
 
-#news {
-  background-color: blue;
-  width: 100%;
-  height: 40px;
-  position: fixed;
-  bottom: 70px; }
+.carousel-item {
+  width: 110%; }
+
+.carousel-item p {
+  float: left;
+  text-align: center;
+  padding: 0 80px;
+  color: red; }
 
 #RNGolf {
   color: white; }
