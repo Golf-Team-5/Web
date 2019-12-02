@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
     <body>
+
+        <div id="bg"></div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -24,38 +26,38 @@
                     <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                    <li>     
-                        <button id="btn-rules" type="button" class="nav-item nav-link pull-right" data-toggle="modal" data-target="#exampleModal">
-                            <span class="fa fa-book fa-2x icon-color"></span>
-                        </button>
-                    </li>
-                    <li>                    
-                        <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
-                    </li>
+                        <li>     
+                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right" data-toggle="modal" data-target="#exampleModal">
+                                <span class="fa fa-book fa-2x icon-color"></span>
+                            </button>
+                        </li>
+                        <li>                    
+                            <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                        </li>
                     </ul>
                 </div>
             </nav> 
         </div>       
-        <div class="container-fluid">
+        <div class="container-fluid row"> <!--row for at holde det horisontalt-->
             <!--Weather picture-->
-            <div class="col-md-2 col-lg-2 float">
-
+            <div class="col-md-2 col-lg-2 ">
+                <p>hej hej</p>
             </div>
             <!--Play-->
-            <div class="col-md-7 col-lg-7 float">
-                <button id="playButton" class="btn-lg btn-danger">
-                    <a href="playerPage.htm">Play</a>
+            <div class="col-md-7 col-lg-7">
+                <button id="playButton" class="btn-lg btn-danger display-block">
+                    <a href="playerPage.htm">Start spil</a>
                 </button>
             </div>
             <!--Leaderboard-->
-            <div id="leaderBoard" class="col-md-3 col-lg-3 float">
-                <table class="table table-hover table-dark">
+            <div class="col-md-3 col-lg-3  leaderBoard-Pos">
+                <table class="table table-hover table-dark leaderBoard">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Swing count</th>
-                            <th scope="col">Score</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Navn</th>
+                                <th scope="col">Slag</th>
+                                <th scope="col">Score</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -141,7 +143,7 @@
         </footer>-->
 
         
-<!-- Modal -->
+<!-- Rules Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -157,7 +159,7 @@
             <p>Det er den bedste ever golf spil</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
         </div>
         </div>
     </div>

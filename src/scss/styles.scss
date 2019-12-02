@@ -2,11 +2,34 @@
     padding:0;
     margin: 0;
 }
+
+body, html {
+    height: 100%;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 body{
-    background-image:url("/img/golf-bg-forside.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    
+    font-family: Arial;
+    #bg {
+        clip-path: polygon(0 1%, 85% 0, 55% 100%, 0% 100%);
+
+        background-image:url("/img/golf-bg-forside.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+   
 }
 
 #brand {
@@ -17,10 +40,19 @@ body{
     float:left;
 }
 
-#leaderBoard{
-    margin-top: 50px;
-    margin-left: 120px;
+.leaderBoard-Pos {
+        top: 50px;
+        right: 50px;
+        width: 80%;
+        .leaderBoard{
+    
+            border-radius: 8px;
+            
+            box-shadow: 0 10px 30px rgba($color: #3c3c3c, $alpha: 0.4);
+        }
 }
+
+
 
 #footer{
     bottom: 0;
@@ -35,9 +67,16 @@ body{
     color:white;
 }
 
+.display-block {
+    display: block;
+}
+
 #playButton{
     width:250px; 
-    margin: 300px 0 0 500px;
+    position: relative;
+    top: 200px;
+    margin: auto;
+    //margin: 300px 0 0 500px;
 }
 
 #btn-rules{
@@ -47,14 +86,15 @@ body{
 
 .carousel-item{
     width:110%;
+    p {
+        float:left;
+        text-align: center;
+        padding: 0 80px;
+        color:red;
+    }
 }
 
-.carousel-item p{
-    float:left;
-    text-align: center;
-    padding: 0 80px;
-    color:red;
-}
+
 
 #RNGolf{
     color: white;
