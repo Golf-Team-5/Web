@@ -3,9 +3,9 @@
     margin: 0;
 }
 
-body, html {
-    height: 100%;
-}
+/* body, html {
+    height: 100vh;
+} */
 
 .position-absolute {
     position: absolute;
@@ -18,6 +18,7 @@ body, html {
 
 body{
     font-family: Arial;
+    
     #bg {
         clip-path: polygon(0 1%, 85% 0, 55% 100%, 0% 100%);
 
@@ -52,7 +53,11 @@ body{
         }
 }
 
-
+#main-left {
+    p {
+        color:white;
+    }
+}
 
 #footer{
     bottom: 0;
