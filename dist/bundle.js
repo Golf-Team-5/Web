@@ -2070,32 +2070,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
-// Main content div
 function axiosGet() {
     var jsonplaceholderString = "http://jsonplaceholder.typicode.com/todos";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(jsonplaceholderString, {
-        params: {
-            _limit: 5
-        }
+    // Test URI - test data
+    var playerScoresUri = "http://localhost:64005/api/players";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
+    /*      params: {
+             _limit:5
+         } */
     })
         .then(function (response) {
         // Content Area
         var mainLeft = document.getElementById('main-left');
+        var mainLeftTable = document.getElementById('myTable');
         console.log(response.data);
         // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
         // response er JSON der kommer tilbage fra URI
         // mainLeft er det element vi tilføjer hvert under-element til
         addScoreToDOM(response, mainLeft);
+        addScoreToTable(response, mainLeftTable);
     })
         .catch(function (err) {
         console.log(err);
     });
 }
 function addScoreToDOM(res, ele) {
+    var i = 1;
     res.data.forEach(function (score) {
         var titleParagraph = document.createElement("p");
-        titleParagraph.innerHTML = score.title;
+        titleParagraph.innerHTML = i + score.name + " | " + score.score;
         ele.appendChild(titleParagraph);
+        i += 1;
+    });
+}
+function addScoreToTable(res, ele) {
+    res.data.forEach(function (score) {
+        var row = ele.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = score.name;
+        cell2.innerHTML = String(score.score);
     });
 }
 
