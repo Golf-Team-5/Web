@@ -24,9 +24,6 @@ body, html {
     background: #3c3c3c;
 }
 
-#myTable td {
-    border: 1px solid black;
-}
 
 body{
     font-family: Arial;
@@ -51,6 +48,11 @@ body{
 
 .float{
     float:left;
+}
+
+.sticky-nav {
+    position: fixed;
+    top: 0;
 }
 
 .leaderBoard-Pos {

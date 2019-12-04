@@ -11,8 +11,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
     <body style="background:darkslategray">
+
+
+
+
         <div id="bg"  class="img-responsive"></div>
         <div class="Container">
+
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -34,57 +39,40 @@
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
             <!--Weather picture-->
+
+
             <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
                 <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+
             </div>
             <!--Play-->
             <div class="col-md-7 col-lg-7 col-sm-12">
                     <a id="playButton" class="btn-lg btn-danger display-block" href="playerPage.htm">Start spil</a>
             </div>
             <!--Leaderboard-->
-            <div class="col-md-3 col-lg-3 col-sm-12 leaderBoard-Pos">
-                <table class="table table-hover table-dark leaderBoard">
-                    <thead>
+
+            <div class="col-md-3 col-lg-3  leaderBoard-Pos">
+                    <h4 style="font-weight: 600;">Leaderboard</h4>
+                    <!-- Leaderboard -->
+                    <table id="myTable" class="table table-hover table-dark leaderBoard">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Navn</th>
-                            <th scope="col">Slag</th>
-                            <th scope="col">Score</th>
+                            <td>1</td>
+                            <td>STR</td>
+                            <td>"3333"</td>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>CEL</td>
                             <td>2</td>
-                            <td>1103</td>
+                            <td>INT</td>
+                            <td>222</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>FIL</td>
-                            <td>10</td>
-                            <td>1102</td>
+                            <td>3</td>
+                            <td>BOO</td>
+                            <td>TRUE</td>
                         </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>EMI</td>
-                            <td>22</td>
-                            <td>986</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>MAR</td>
-                            <td>50</td>
-                            <td>570</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>JON</td>
-                            <td>89</td>
-                            <td>375</td>
-                        </tr>                        
-                    </tbody>
-                </table>
+                    </table>
+
+            
             </div>
         </div>        
         <div class="container-fluid" style="position: fixed; bottom: 0;">

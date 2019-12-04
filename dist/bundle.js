@@ -2087,7 +2087,7 @@ function axiosGet() {
         // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
         // response er JSON der kommer tilbage fra URI
         // mainLeft er det element vi tilføjer hvert under-element til
-        addScoreToDOM(response, mainLeft);
+        // addScoreToDOM(response, mainLeft)
         addScoreToTable(response, mainLeftTable);
     })
         .catch(function (err) {
@@ -2104,12 +2104,16 @@ function addScoreToDOM(res, ele) {
     });
 }
 function addScoreToTable(res, ele) {
+    var i = res.data.length;
     res.data.forEach(function (score) {
         var row = ele.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        cell0.innerHTML = String(i);
         cell1.innerHTML = score.name;
         cell2.innerHTML = String(score.score);
+        i -= 1;
     });
 }
 
