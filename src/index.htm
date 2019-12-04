@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,19 +12,17 @@
     </head>
     <body style="background:darkslategray">
 
-        <div id="bg"></div>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class="Container" style="min-height: 50px">
+
+
+
+        <div id="bg"  class="img-responsive"></div>
+        <div class="Container">
+
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <img src="/img/logo-3-tpbg.PNG" width="80px">
-
-                        <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a>
-                                      
-                    
+                        <img id="logo" src="/img/logo-3-tpbg.PNG" alt="RNGolf logo">
+                        <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a> 
                     </div>
                     <ul class="nav navbar-nav navbar-right" >
                         <li>     
@@ -37,25 +32,25 @@
                         </li>
                         <li>                    
                             <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
-                        </li>
-              
+                        </li>              
                     </ul>
                 </div>
             </nav> 
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
             <!--Weather picture-->
-            <div class="col-md-2 col-lg-2" style="min-height: 90vh">
-                
-                
+
+
+            <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
+                <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+
             </div>
             <!--Play-->
-            <div class="col-md-7 col-lg-7">
-                <button id="playButton" class="btn-lg btn-danger display-block">
-                    <a href="playerPage.htm">Start spil</a>
-                </button>
+            <div class="col-md-7 col-lg-7 col-sm-12">
+                    <a id="playButton" class="btn-lg btn-danger display-block" href="playerPage.htm">Start spil</a>
             </div>
             <!--Leaderboard-->
+
             <div class="col-md-3 col-lg-3  leaderBoard-Pos">
                     <h4 style="font-weight: 600;">Leaderboard</h4>
                     <!-- Leaderboard -->
@@ -76,9 +71,10 @@
                             <td>TRUE</td>
                         </tr>
                     </table>
+
+            
             </div>
-        </div>
-        
+        </div>        
         <div class="container-fluid" style="position: fixed; bottom: 0;">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" style="background-color:darkslategray; width:100%;">
@@ -103,55 +99,32 @@
                 </div>
             </div>
         </div> 
-        
-        <!--<footer id="footer" class="container-fluid">
-           <ul class="list-group list-group-horizontal-md" style="background-color:green;">
-               <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:blue; width:100%;">
-                   <ul class="list-group">
-                       <li>frg</li>
-                   </ul>
-               </li>
-               <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:lightblue; width:100%;">
-                    <ul class="list-group">
-                        <li>wed</li>
-                    </ul>
-                </li>
-                <li class="list-group-item col-md-4 col-lg-4 col-sm-4" style="background-color:darkblue; width:100%;">
-                    <ul class="list-group">
-                        <li>frfrg</li>
-                    </ul>
-                </li>
-           </ul>
-        </footer>-->
-
-        
-<!-- Rules Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Regler for RNGolf</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Det er ligesom golf</p>
-            <p>bare meget sjovere!</p>
-            <p>Det er den bedste ever golf spil</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
-        </div>
-        </div>
-    </div>
-</div>
-        
-<div style="background:darkslategray; min-height:300px;"></div>
-
-
+        <!-- Test div til selenium test -->
+        <div style="background:darkslategray; min-height:300px;"></div>
+        <!-- Rules Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Regler for RNGolf</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Det er ligesom golf</p>
+                    <p>bare meget sjovere!</p>
+                    <p>Det er den bedste ever golf spil</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
+                </div>
+                </div>
+            </div>
+        </div>  
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>    </body>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> 
         <script src="bundle.js"></script>
+    </body>
 </html>
