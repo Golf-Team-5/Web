@@ -2127,8 +2127,47 @@ function addScoreToTable(res, ele) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+
 
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
+Object(_position__WEBPACK_IMPORTED_MODULE_1__["AxiosGetSwingData"])();
+
+
+/***/ }),
+
+/***/ "./src/js/position.ts":
+/*!****************************!*\
+  !*** ./src/js/position.ts ***!
+  \****************************/
+/*! exports provided: AxiosGetSwingData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AxiosGetSwingData", function() { return AxiosGetSwingData; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+function CurrentPosition(bane, hit) {
+    var currentPosition = bane - hit;
+    return currentPosition;
+}
+// Medtoden tager data'en fra Swingdata
+function AxiosGetSwingData() {
+    console.log("axiosGetSwingData function works");
+    var element = document.getElementById('positionFromHole');
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:52549/api/swingdata')
+        .then(function (response) {
+        console.log(response.data);
+        var data = response.data;
+        element.innerHTML = String(CurrentPosition(1000, data.swingData));
+    })
+        .catch(function (error) {
+        console.log(error);
+    });
+}
+
 
 
 /***/ }),
