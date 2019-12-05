@@ -29,7 +29,7 @@ function axiosGet(){
         // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
         // response er JSON der kommer tilbage fra URI
         // mainLeft er det element vi tilføjer hvert under-element til
-        addScoreToDOM(response, mainLeft)
+        // addScoreToDOM(response, mainLeft)
         addScoreToTable(response, mainLeftTable)
         
     })
@@ -53,15 +53,22 @@ function addScoreToDOM(res: AxiosResponse<IScore[]>, ele: HTMLDivElement){
 
 
 function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
+
+    let i: number = res.data.length
+
     res.data.forEach((score: IScore) => {
 
         let row = ele.insertRow(0)
-        let cell1 = row.insertCell(0)
-        let cell2 = row.insertCell(1)
+        let cell0 = row.insertCell(0)
+        let cell1 = row.insertCell(1)
+        let cell2 = row.insertCell(2)
     
+
+        cell0.innerHTML = String(i)
         cell1.innerHTML = score.name
         cell2.innerHTML = String(score.score)
         
+        i -= 1
     });  
 
 }
