@@ -2057,65 +2057,30 @@ module.exports = __webpack_require__.p + "index.htm";
 
 /***/ }),
 
-/***/ "./src/js/importapi.ts":
-/*!*****************************!*\
-  !*** ./src/js/importapi.ts ***!
-  \*****************************/
-/*! exports provided: axiosGet */
+/***/ "./src/js/Score.ts":
+/*!*************************!*\
+  !*** ./src/js/Score.ts ***!
+  \*************************/
+/*! exports provided: GetScoreAndNoOfSwings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetScoreAndNoOfSwings", function() { return GetScoreAndNoOfSwings; });
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
-function axiosGet() {
-    var jsonplaceholderString = "http://jsonplaceholder.typicode.com/todos";
-    // Test URI - test data
-    var playerScoresUri = "http://localhost:64005/api/players";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
-    /*      params: {
-             _limit:5
-         } */
-    })
+function GetScoreAndNoOfSwings(par) {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore")
         .then(function (response) {
-        // Content Area
-        var mainLeft = document.getElementById('main-left');
-        var mainLeftTable = document.getElementById('myTable');
         console.log(response.data);
-        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
-        // response er JSON der kommer tilbage fra URI
-        // mainLeft er det element vi tilføjer hvert under-element til
-        // addScoreToDOM(response, mainLeft)
-        addScoreToTable(response, mainLeftTable);
     })
-        .catch(function (err) {
-        console.log(err);
+        .catch(function (error) {
+        console.log(Error);
     });
 }
-function addScoreToDOM(res, ele) {
-    var i = 1;
-    res.data.forEach(function (score) {
-        var titleParagraph = document.createElement("p");
-        titleParagraph.innerHTML = i + score.name + " | " + score.score;
-        ele.appendChild(titleParagraph);
-        i += 1;
-    });
-}
-function addScoreToTable(res, ele) {
-    var i = res.data.length;
-    res.data.forEach(function (score) {
-        var row = ele.insertRow(0);
-        var cell0 = row.insertCell(0);
-        var cell1 = row.insertCell(1);
-        var cell2 = row.insertCell(2);
-        cell0.innerHTML = String(i);
-        cell1.innerHTML = score.name;
-        cell2.innerHTML = String(score.score);
-        i -= 1;
-    });
-}
+var scoreButton = document.getElementById("ScoreBtn");
+scoreButton.addEventListener("click", function () { GetScoreAndNoOfSwings(3); });
 
 
 
@@ -2130,49 +2095,11 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
 
-
-Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
-Object(_position__WEBPACK_IMPORTED_MODULE_1__["AxiosGetSwingData"])();
-
-
-/***/ }),
-
-/***/ "./src/js/position.ts":
-/*!****************************!*\
-  !*** ./src/js/position.ts ***!
-  \****************************/
-/*! exports provided: AxiosGetSwingData */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AxiosGetSwingData", function() { return AxiosGetSwingData; });
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-
-function CurrentPosition(bane, hit) {
-    var currentPosition = bane - hit;
-    return currentPosition;
-}
-// Medtoden tager data'en fra Swingdata
-function AxiosGetSwingData() {
-    console.log("axiosGetSwingData function works");
-    var element = document.getElementById('positionFromHole');
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:52549/api/swingdata')
-        .then(function (response) {
-        console.log("response.data " + response.data);
-        console.log("response.data.swingData " + response.data.swingData);
-        var data = response.data;
-        element.innerHTML = String(CurrentPosition(1000, data.swingData));
-    })
-        .catch(function (error) {
-        console.log(error);
-    });
-}
-
+//axiosGet();
+//AxiosGetSwingData();
+Object(_Score__WEBPACK_IMPORTED_MODULE_0__["GetScoreAndNoOfSwings"])(3);
 
 
 /***/ }),
