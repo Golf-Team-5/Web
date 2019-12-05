@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,36 +7,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="bundle.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <div id="bg"  class="img-responsive"></div>
         <div class="Container">
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                    <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a>
+                        <img id="logo" src="/img/logo-3-tpbg.PNG" alt="RNGolf logo">
+                        <a id="brand" class="navbar-brand" href="index.htm">RNGolf</a> 
                     </div>
-                    <ul class="nav navbar-nav navbar-right">
-                    <li>                    
-                        <a class="nav-item nav-link pull-right" href="#"><span class="fa fa-book fa-2x icon-color"></span></a>
-                    </li>
-                    <li>                    
-                        <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
-                    </li>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <li>     
+                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right" data-toggle="modal" data-target="#exampleModal">
+                                <span class="fa fa-book fa-2x icon-color"></span>
+                            </button>
+                        </li>
+                        <li>                    
+                            <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                        </li>              
                     </ul>
                 </div>
             </nav> 
-        </div>       
+        </div>     
         <div class="container-fluid">
-            <!--Weather picture-->
-            
+            <!--Weather picture-->            
             <div class="row">
-                <div style="width: 750px; height: 500px; background-color: cornsilk; margin-top: 70px; margin-left: 500px;" class="col-md-8 col-lg-8 float">
-            
+                <div style="width: 750px; height: 500px; background-color: rgba(0,0,0,0.5); margin-top: 70px; margin-left: 500px;" class="col-md-8 col-lg-8 float">
+                    <div class="row">
+
+                    
+                    <div class="col-md-4 col-lg-4 col-sm-4">
+                        <img src="img/msg-Eagle-with-the-ball.jpg" style="width:300px; height: 300px; margin-top:10px;"/>
+                        <h3 style="color:red;">-500 points</h3>
+                            <br>
+                            <p style="color:white;">Du har skudt <b>120 m</b>
+                            <br>
+                            din bold ligger nu på: <b>320m / 750m</b>
+                            <br>
+                            Du mangler at skyde bolden: <b>430m</b></p>
+                        
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-sm-8">
+                        <p style="color:white; font-size:18px; width:450px; margin-top:50px;">
+                            Du har en skarp fornemmelse at dette bliver din hole-in-one. Intet kan hamle op med din viljestyrke! I det du laver bevægelserne til at svinge din golfkølle og slår golfkuglen kraftigt. Den flyver henover banen og det går virkelig din vej siden den flyver lige imod golfhullet!
+                            <br>
+                            …
+                            <br>
+                            I horisonten ser du en vinget skikkelse som flyver over golfbanen. DET VAR EN ØRN! Den lavede et kæmpe dyk og fangede golfkuglen. Du så aldrig den golfkugle igen.
+                            
+                        </p>
+                    </div>
+                </div>
                 </div>                
             </div>
             <div class="row">

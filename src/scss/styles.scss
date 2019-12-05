@@ -16,13 +16,14 @@ body, html {
     margin-right: auto;
 }
 
+#logo {
+    width:80px;
+}
+
 #main-left {
     background: #3c3c3c;
 }
 
-#myTable td {
-    border: 1px solid black;
-}
 
 body{
     font-family: Arial;
@@ -30,10 +31,9 @@ body{
     #bg {
         clip-path: polygon(0 1%, 95% 0, 78% 100%, 0% 100%);
         background-image:url("/img/Golfbane-bg.jpg");
-        background-size: cover;
-        
+        background-size: cover;       
         background-repeat: no-repeat;
-        height: 100vh;
+        height: 100%;
         width: 100%;
         position: absolute;
         z-index: -1;
@@ -51,8 +51,12 @@ body{
     float:left;
 }
 
+.sticky-nav {
+    position: fixed;
+    top: 0;
+}
+
 .leaderBoard-Pos {
-        top: 50px;
         right: 50px;
         width: 80%;
         
@@ -68,6 +72,10 @@ body{
     p {
         color:white;
     }
+}
+#weather-img{
+    width:150px;
+    height: 150px;
 }
 
 #footer{
@@ -90,9 +98,8 @@ body{
 #playButton{
     width:250px; 
     position: relative;
-    top: 200px;
+    text-align: center;
     margin: auto;
-    //margin: 300px 0 0 500px;
 }
 
 #btn-rules{
@@ -115,3 +122,91 @@ body{
 #RNGolf{
     color: white;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #playButton{
+        margin-top:-260px;
+        width:150px;
+    }
+    #weather-img{
+        margin-top:20px;
+        width:70px;
+        height: 70px;
+    }
+    .leaderBoard{
+        margin-left:65px;
+    }
+    #carouselExampleSlidesOnly{
+        height: 30px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #playButton{
+        margin-top:-180px;
+    }
+    #weather-img{
+        margin-top:10px;
+        width:70px;
+        height: 70px;
+    }
+    .leaderBoard{
+        margin-top:-20px;
+        margin-left:65px;
+    }
+    #carouselExampleSlidesOnly{
+        height: 30px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #playButton{
+        margin-top:550px;
+    }
+    #weather-img{
+        margin-top:20px;
+        width:100px;
+        height: 100px;
+    }
+    .leaderBoard{
+        margin-top:50px;
+        margin-left:-30px;
+    }
+    #carouselExampleSlidesOnly{
+        height: 30px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #playButton{
+        margin-top:450px;
+    }
+    #weather-img{
+        margin-top:20px;
+        width:150px;
+        height: 150px;
+    }
+    .leaderBoard{
+        margin-top:50px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #playButton{
+        margin-top:450px;
+    }
+    #weather-img{
+        margin-top:20px;
+        width:150px;
+        height: 150px;
+    }
+    .leaderBoard{
+        margin-top:50px;
+    }
+}
+  
