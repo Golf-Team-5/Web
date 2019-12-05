@@ -2159,7 +2159,8 @@ function AxiosGetSwingData() {
     var element = document.getElementById('positionFromHole');
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:52549/api/swingdata')
         .then(function (response) {
-        console.log(response.data);
+        console.log("response.data " + response.data);
+        console.log("response.data.swingData " + response.data.swingData);
         var data = response.data;
         element.innerHTML = String(CurrentPosition(1000, data.swingData));
     })
