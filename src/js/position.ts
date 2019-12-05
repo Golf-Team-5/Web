@@ -3,32 +3,26 @@ import axios, {
     AxiosError
 } from "../../node_modules/axios/index";
 
-interface IScore{
-    swingData:number
-}
+const Uri : string= "http://localhost:52549/api/swingdata"
 
-function CurrentPosition(bane:number, hit:number) {
-    var currentPosition = bane - hit;
+let courseLength: number = 1000
+let resultatDiv: HTMLDivElement = <HTMLDivElement> document.getElementById('resultat-af-et-slag')
+const getDataBtn: HTMLButtonElement = <HTMLButtonElement> document.getElementById('PositionButton')
+getDataBtn.addEventListener("click", GetHit)
 
-    return currentPosition;
-}
-// Medtoden tager data'en fra Swingdata
-function AxiosGetSwingData () {
-    console.log("axiosGetSwingData function works")
-    let element:HTMLDivElement = <HTMLDivElement>document.getElementById('positionFromHole')
-        axios.get<IScore>('http://localhost:52549/api/swingdata')
-        .then(function (response:AxiosResponse<IScore>) {
-            console.log("response.data " + response.data)
-            console.log("response.data.swingData " + response.data.swingData)
-            let data = response.data
-            element.innerHTML = String(CurrentPosition(1000, data.swingData))
-        })
-        .catch(function (error:AxiosError ){
-            console.log(error)
-        })
+export function GetHit ()  {
+    axios.get(Uri)
+    .then (function (response: AxiosResponse) {
         
+        let element: HTMLParagraphElement = <HTMLParagraphElement> document.createElement<'p'>('p')
+        element.innerHTML = String(courseLength - response.data)
+        resultatDiv.appendChild(element)
+        
+       // return courseLength - (response.data)
+    })
     
+    .catch (function (error: AxiosError) {
+        console.log(error)
+    })
     
 }
-
-export {AxiosGetSwingData}
