@@ -6,6 +6,7 @@ import axios, {
 interface IScore{
     swingData:number
 }
+
 function CurrentPosition(bane:number, hit:number) {
     var currentPosition = bane - hit;
 
@@ -17,7 +18,8 @@ function AxiosGetSwingData () {
     let element:HTMLDivElement = <HTMLDivElement>document.getElementById('positionFromHole')
         axios.get<IScore>('http://localhost:52549/api/swingdata')
         .then(function (response:AxiosResponse<IScore>) {
-            console.log(response.data)
+            console.log("response.data " + response.data)
+            console.log("response.data.swingData " + response.data.swingData)
             let data = response.data
             element.innerHTML = String(CurrentPosition(1000, data.swingData))
         })
