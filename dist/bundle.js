@@ -2070,17 +2070,84 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
+var scoreCountElement = document.getElementById("scoreCount");
+var swingCountElement = document.getElementById("swingCount");
 function GetScoreAndNoOfSwings(par) {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore")
+    console.log(par);
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
+        params: {
+            Par: par
+        }
+    })
         .then(function (response) {
-        console.log(response.data);
+        console.log("Data: " + response.data);
+        scoreCountElement.innerHTML = "Point: " + response.data[0];
+        swingCountElement.innerHTML = "Antal Sving: " + response.data[1];
     })
         .catch(function (error) {
         console.log(Error);
     });
 }
-var scoreButton = document.getElementById("ScoreBtn");
-scoreButton.addEventListener("click", function () { GetScoreAndNoOfSwings(3); });
+
+
+
+/***/ }),
+
+/***/ "./src/js/importapi.ts":
+/*!*****************************!*\
+  !*** ./src/js/importapi.ts ***!
+  \*****************************/
+/*! exports provided: axiosGet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+function axiosGet() {
+    var jsonplaceholderString = "http://jsonplaceholder.typicode.com/todos";
+    // Test URI - test data
+    var playerScoresUri = "http://localhost:64005/api/players";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
+    /*      params: {
+             _limit:5
+         } */
+    })
+        .then(function (response) {
+        // Content Area
+        var mainLeft = document.getElementById('main-left');
+        var mainLeftTable = document.getElementById('myTable');
+        console.log(response.data);
+        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
+        // response er JSON der kommer tilbage fra URI
+        // mainLeft er det element vi tilføjer hvert under-element til
+        addScoreToDOM(response, mainLeft);
+        addScoreToTable(response, mainLeftTable);
+    })
+        .catch(function (err) {
+        console.log(err);
+    });
+}
+function addScoreToDOM(res, ele) {
+    var i = 1;
+    res.data.forEach(function (score) {
+        var titleParagraph = document.createElement("p");
+        titleParagraph.innerHTML = i + score.name + " | " + score.score;
+        ele.appendChild(titleParagraph);
+        i += 1;
+    });
+}
+function addScoreToTable(res, ele) {
+    res.data.forEach(function (score) {
+        var row = ele.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = score.name;
+        cell2.innerHTML = String(score.score);
+    });
+}
 
 
 
@@ -2095,11 +2162,18 @@ scoreButton.addEventListener("click", function () { GetScoreAndNoOfSwings(3); })
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
+/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
 
-//axiosGet();
+//import {AxiosGetSwingData} from './position'
+
+Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
-Object(_Score__WEBPACK_IMPORTED_MODULE_0__["GetScoreAndNoOfSwings"])(3);
+//element der henter par tallet til beregning af score, fra siden. 
+var ParInput = document.getElementById("parInput");
+//knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
+var scoreButton = document.getElementById("ScoreBtn");
+scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
 
 
 /***/ }),

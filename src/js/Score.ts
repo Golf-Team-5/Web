@@ -4,12 +4,25 @@ import axios, {
 } from "../../node_modules/axios/index";
 import { axiosGet } from "./importapi";
 
+
+
+let scoreCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("scoreCount")
+let swingCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("swingCount")
+
 function GetScoreAndNoOfSwings(par: number)
 {
+    console.log(par)
     
-    axios.get("http://localhost:52549/api/swingdata/GetScore")
+    axios.get("http://localhost:52549/api/swingdata/GetScore"  ,{
+        params: {
+            Par:  par
+        }
+    } )
+    
     .then(function (response: AxiosResponse){
-        console.log(response.data)
+        console.log("Data: "+ response.data)
+        scoreCountElement.innerHTML = "Point: " + response.data[0]
+        swingCountElement.innerHTML = "Antal Sving: " + response.data[1]
     })
     .catch(function (error: AxiosError) {
         console.log(Error);
@@ -18,7 +31,6 @@ function GetScoreAndNoOfSwings(par: number)
 
 }
 
-let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ScoreBtn");
-scoreButton.addEventListener("click", function() {GetScoreAndNoOfSwings(3) });
+
 
 export {GetScoreAndNoOfSwings}
