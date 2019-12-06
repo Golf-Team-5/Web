@@ -21,8 +21,8 @@ function GetScoreAndNoOfSwings(par: number)
     
     .then(function (response: AxiosResponse){
         console.log("Data: "+ response.data)
-        scoreCountElement.innerHTML = response.data[0]
-        swingCountElement.innerHTML = response.data[1]
+        scoreCountElement.innerHTML = "Point: " + response.data[0]
+        swingCountElement.innerHTML = "Antal Sving: " + response.data[1]
     })
     .catch(function (error: AxiosError) {
         console.log(Error);

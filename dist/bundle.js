@@ -2081,8 +2081,8 @@ function GetScoreAndNoOfSwings(par) {
     })
         .then(function (response) {
         console.log("Data: " + response.data);
-        scoreCountElement.innerHTML = response.data[0];
-        swingCountElement.innerHTML = response.data[1];
+        scoreCountElement.innerHTML = "Point: " + response.data[0];
+        swingCountElement.innerHTML = "Antal Sving: " + response.data[1];
     })
         .catch(function (error) {
         console.log(Error);
@@ -2169,8 +2169,10 @@ __webpack_require__.r(__webpack_exports__);
 
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
-var ParInput = document.getElementById("parInput2");
-var scoreButton = document.getElementById("ScoreBtn2");
+//element der henter par tallet til beregning af score, fra siden. 
+var ParInput = document.getElementById("parInput");
+//knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
+var scoreButton = document.getElementById("ScoreBtn");
 scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
 
 

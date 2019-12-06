@@ -8,10 +8,11 @@ axiosGet();
 //AxiosGetSwingData();
 
 
+//element der henter par tallet til beregning af score, fra siden. 
+let ParInput: HTMLInputElement = <HTMLInputElement>document.getElementById("parInput")
 
-let ParInput: HTMLInputElement = <HTMLInputElement>document.getElementById("parInput2")
-
-let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ScoreBtn2");
+//knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
+let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ScoreBtn");
 scoreButton.addEventListener("click", function() { GetScoreAndNoOfSwings(Number(ParInput.value))});
 
 

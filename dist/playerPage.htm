@@ -38,22 +38,27 @@
                     <div class="row">
 
                     
-                    <div class="col-md-4 col-lg-4 col-sm-4">
-                        <img src="img/msg-Eagle-with-the-ball.jpg" style="width:300px; height: 300px; margin-top:10px;"/>
-                        <p id="scoreCount" style="color:red;"> points</p> <p id="swingCount"></p>
-                            <br>
-                            <p style="color:white;">Du har skudt <b>120 m</b>
-                            <br>
-                            din bold ligger nu på: <b>320m / 750m</b>
-                            <br>
-                            Du mangler at skyde bolden: <b>430m</b></p>
-                        
-                            <div class="col " style="margin: auto; width: 500px;">
-                                <button class="btn btn-primary" id="ScoreBtn2">Test af Score Metode</button>
-                                <input type="number"  id="parInput2" />
-                            </div>
-
-                    </div>
+                        <!-- Message Box  -->
+                        <div class="col-md-4 col-lg-4 col-sm-4">
+                            <img src="img/msg-Eagle-with-the-ball.jpg" style="width:300px; height: 300px; margin-top:10px;"/>
+                            <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
+                            <p id="scoreCount" style="color:red;"> points</p> <p id="swingCount"></p>
+                                <br>
+                                <p style="color:white;">Du har skudt <b>120 m</b>
+                                <br>
+                                din bold ligger nu på: <b>320m / 750m</b>
+                                <br>
+                                Du mangler at skyde bolden: <b>430m</b></p>
+                                
+                                <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
+                                <div class="col " style="margin: auto; width: 500px;">
+                                    <button class="btn btn-primary" id="ScoreBtn">Næste Tur</button>
+                                    <!--Felt til manuel indtastning af Par-->
+                                    <input type="number"  id="parInput" />
+                                </div>
+                                
+            
+                        </div>
                     
                     <div class="col-md-8 col-lg-8 col-sm-8">
                         <p style="color:white; font-size:18px; width:450px; margin-top:50px;">
@@ -77,5 +82,9 @@
         <div id="positionFromHole"></div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>    </body>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>   
+        <script src="bundle.js"></script>
+        
+    </body>
+
 </html>
