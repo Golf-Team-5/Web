@@ -2196,7 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
-// banelængde, senere kan det statiske tal udskiftes til at vøre mere dynamisk
+// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
 var getDataBtn = document.getElementById('ScoreBtn');

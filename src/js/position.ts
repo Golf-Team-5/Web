@@ -6,7 +6,7 @@ import axios, {
 // Uri til et slag fra Rest Service
 const Uri : string= "http://localhost:52549/api/swingdata"
 
-// banelængde, senere kan det statiske tal udskiftes til at vøre mere dynamisk
+// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 let courseLength: number = 1000
 
 // reference til Næste slag knappen, samt dens "listener"
