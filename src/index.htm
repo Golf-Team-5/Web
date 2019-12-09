@@ -121,9 +121,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>*Dit navn kan maks være på 3 bogstaver</p>
-                    <p>*Dit navn må ikke indeholde specieltegn</p>
-                    <input type="number" placeholder="skriv dit navn her..."  id="parInput" />
+                    <p>*Dit navn kan maks være på 3 bogstaver
+                        <br/>
+                        *Dit navn må ikke indeholde specieltegn</p>
+                    <input placeholder=" skriv dit navn her..."  id="usernameInput" type="text" maxlength="3" required />
                 </div>
                 <div class="modal-footer">
                     <a class="btn-lg btn-succes display-block" href="playerPage.htm">Start spil</a>
@@ -133,26 +134,57 @@
         </div>
 
         <!-- Rules Modal -->
-        <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal large fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="rulesModalLabel">Regler for RNGolf</h5>
+                    <h5 class="modal-title" id="rulesModalLabel">Spillets fremgangsmåde</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Det er ligesom golf</p>
-                    <p>bare meget sjovere!</p>
-                    <p>Det er den bedste ever golf spil</p>
+                    <p>
+                        <b>Navn</b><br/>
+                        For at kunne starte et spil skal man have indtastet sit navn. RNGolf køre på de gamle akade principper 
+                        og derfor skal navnet kun være på 3 bogstaver.
+                    </p>
+                    <p>
+                        <b>Sving</b><br/>
+                        Når spillet er igang kan man lave et golfslag ved at trykke på den grønne knap "Sving" nede til venstre.
+                        Herefter slår man med sin Pi, jo hårder der bliver slået desto længere vil golfbolden flyve. 
+                    </p>
+                    <p>
+                        <b>Events</b><br/>
+                        Under spillet kan der opstå events der kan ændre din score. Disse events er tilfældige, 
+                        så sørg for altid at gøre dit bedste! Her er det nemlig ikke altid den bedste der vinder...
+                    </p>
+                    <p>
+                        <b>Score</b><br/>
+                        Din score vil blive beregnet ved hjælp af din mængde af golfslag for at få bolden i hul, samt evt. events du vil møde undervejs.<br>
+                        I modsætning af almindelig gold, gælder det her om at få flest point - den højeste score som muligt.
+                        <br/>
+                        <br/>
+                        2000 points = Hole-In-One
+                        <br/>
+                        1000 points = Hvis antal af slag er mindre end Par                        
+                        <br/>
+                        -100 points = Negative events
+                        <br/>
+                        100 points = Positive evnents  
+                    </p>
+                    <p>
+                        <b>Forlad spil</b><br/>
+                        Man kan på et hvert tidspunkt afslutte sit spil ved at trykke på "Afslut spil knappen" nede til højre. 
+                    </p>                    
                 </div>
                 <div class="modal-footer">
+                    <p><b>God fornøjelse med dit spil!!</b></p>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
                 </div>
                 </div>
             </div>
-        </div> 
+        </div>  
 
         <!-- Leader Modal -->
         <div class="modal fade" id="leaderModal" tabindex="-1" role="dialog" aria-labelledby="leaderModalLabel" aria-hidden="true">
