@@ -25,7 +25,7 @@ export function GetHit ()  {
     .then (function (response: AxiosResponse) {
         
         totalHits +=1;
-
+        console.log(response.data)
         // her vises et enkelt slag, plus den samlet længde
         totalDistance += Number(response.data);
         let currentSwing: HTMLFontElement = <HTMLFontElement> document.getElementById('current-hit')   
