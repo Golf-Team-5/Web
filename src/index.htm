@@ -6,16 +6,15 @@
         <title>RNGolf</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon-->
+        <link rel="icon" href="img/logo-3-tpbg.png" type="image/x-icon"/>
+        <!-- CSS -->
         <link rel="stylesheet" href="bundle.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
     <body style="background:darkslategray">
-
-
-
-
-        <div id="bg"  class="img-responsive"></div>
+        <div id="bg" class="img-responsive"></div>
         <div class="Container">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -26,12 +25,14 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right" >
                         <li>     
-                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right" data-toggle="modal" data-target="#exampleModal">
+                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right btn-bg" data-toggle="modal" data-target="#rulesModal">
                                 <span class="fa fa-book fa-2x icon-color"></span>
                             </button>
                         </li>
                         <li>                    
-                            <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                            <button id="btn-leader" type="button" class="nav-item nav-link pull-right btn-bg" data-toggle="modal" data-target="#leaderModal">
+                                <span style="font-size: 40px; line-height: 30px; font-weight: bolder; color:white;" >#</span>
+                            </button>
                         </li>              
                     </ul>
                 </div>
@@ -39,22 +40,30 @@
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
             <!--Weather picture-->
-
-
             <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
                 <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
-
             </div>
+
             <!--Play-->
             <div class="col-md-7 col-lg-7 col-sm-12">
-                    <a id="playButton" class="btn-lg btn-danger display-block" href="playerPage.htm">Start spil</a>
+                <a id="playButton" class="btn-lg btn-danger display-block" href="playerPage.htm" data-toggle="modal" data-target="#startModal">Start spil</a>
             </div>
-            <!--Leaderboard-->
 
+            <!--Leaderboard-->
             <div class="col-md-3 col-lg-3  leaderBoard-Pos">
-                    <h4 style="font-weight: 600;">Leaderboard</h4>
-                    <!-- Leaderboard -->
-                    <table id="myTable" class="table table-hover table-dark leaderBoard">
+                <!-- Leaderboard -->
+                <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="3">Top 3 score</th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Navn</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <tr>
                             <td>1</td>
                             <td>STR</td>
@@ -70,9 +79,8 @@
                             <td>BOO</td>
                             <td>TRUE</td>
                         </tr>
-                    </table>
-
-            
+                    </tbody>                        
+                </table>            
             </div>
         </div>        
         <div class="container-fluid" style="position: fixed; bottom: 0;">
@@ -101,12 +109,35 @@
         </div> 
         <!-- Test div til selenium test -->
         <div style="background:darkslategray; min-height:300px;"></div>
-        <!-- Rules Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <!-- start Modal -->
+        <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Regler for RNGolf</h5>
+                    <h5 class="modal-title" id="startModalLabel">For at starte skal vi bruge dit navn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>*Dit navn kan maks være på 3 bogstaver</p>
+                    <p>*Dit navn må ikke indeholde specieltegn</p>
+                    <input type="number" placeholder="skriv dit navn her..."  id="parInput" />
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-lg btn-succes display-block" href="playerPage.htm">Start spil</a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Modal -->
+        <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rulesModalLabel">Regler for RNGolf</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -121,7 +152,56 @@
                 </div>
                 </div>
             </div>
+        </div> 
+
+        <!-- Leader Modal -->
+        <div class="modal fade" id="leaderModal" tabindex="-1" role="dialog" aria-labelledby="leaderModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="leaderModalLabel">Her kan du tjekke top 3 score over hele spillet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th colspan="3">Top 3 score</th>
+                            </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Navn</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>STR</td>
+                                <td>"3333"</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>INT</td>
+                                <td>222</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>BOO</td>
+                                <td>TRUE</td>
+                            </tr>
+                        </tbody>                        
+                    </table>  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
+                </div>
+                </div>
+            </div>
         </div>  
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> 

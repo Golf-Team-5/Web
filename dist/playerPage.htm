@@ -5,12 +5,15 @@
         <title>RNGolf</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon-->
+        <link rel="icon" href="img/logo-3-tpbg.png" type="image/x-icon"/>
+        <!-- CSS -->
         <link rel="stylesheet" href="bundle.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
     <body>
-        <div id="bg"  class="img-responsive"></div>
+        <div id="bg" class="img-responsive"></div>
         <div class="Container">
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
                 <div class="container-fluid">
@@ -20,57 +23,57 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right" >
                         <li>     
-                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right" data-toggle="modal" data-target="#exampleModal">
+                            <button id="btn-rules" type="button" class="nav-item nav-link pull-right btn-bg" data-toggle="modal" data-target="#rulesModal">
                                 <span class="fa fa-book fa-2x icon-color"></span>
                             </button>
                         </li>
                         <li>                    
-                            <a class="nav-item nav-link" href="#"><span class="fa fa-gear fa-2x icon-color"></span></a>
+                            <button id="btn-leader" type="button" class="nav-item nav-link pull-right btn-bg" data-toggle="modal" data-target="#leaderModal">
+                                <span style="font-size: 40px; line-height: 30px; font-weight: bolder; color:white;" >#</span>
+                            </button>
                         </li>              
                     </ul>
                 </div>
             </nav> 
         </div>     
-        <div class="container-fluid">
-            <!--Weather picture-->            
+        <div class="container-fluid">     
             <div class="row">
-                <div style="width: 750px; height: 500px; background-color: rgba(0,0,0,0.5); margin-top: 70px; margin-left: 500px;" class="col-md-8 col-lg-8 float">
-                    <div class="row">
-
-                    
+               <!--Weather picture-->
+                <div class="col-md-1 col-lg-1 col-sm-1">
+                    <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                </div>
+                <div style="width: 750px; height: 500px; background-color: rgba(0,0,0,0.5); margin-top: 70px; margin-left: 500px; margin-top:-150px;" class="col-md-8 col-lg-8 col-lg-8 float">
+                    <div class="row">                    
                         <!-- Message Box  -->
                         <div class="col-md-4 col-lg-4 col-sm-4">
                             <img src="img/msg-Eagle-with-the-ball.jpg" style="width:300px; height: 300px; margin-top:10px;"/>
                             <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
-                            <p id="scoreCount" style="color:red;"> points</p> <p id="swingCount"></p>
-                                <br>
-                                <p style="color:white;">Du har skudt <b>120 m</b>
-                                <br>
-                                din bold ligger nu på: <b>320m / 750m</b>
-                                <br>
-                                Du mangler at skyde bolden: <b>430m</b></p>
-                                
-                                <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
-                                <div class="col " style="margin: auto; width: 500px;">
-                                    <button class="btn btn-primary" id="ScoreBtn">Næste Tur</button>
-                                    <!--Felt til manuel indtastning af Par-->
-                                    <input type="number"  id="parInput" />
-                                </div>
-                                 
-            
-                        </div>
-                    
-                    <div class="col-md-8 col-lg-8 col-sm-8">
-                        <p style="color:white; font-size:18px; width:450px; margin-top:50px;">
-                            Du har en skarp fornemmelse at dette bliver din hole-in-one. Intet kan hamle op med din viljestyrke! I det du laver bevægelserne til at svinge din golfkølle og slår golfkuglen kraftigt. Den flyver henover banen og det går virkelig din vej siden den flyver lige imod golfhullet!
+                            <p id="scoreCount" style="color:white;"> points</p> <p id="swingCount"></p>
                             <br>
-                            …
+                            <p style="color:white;">Du har skudt <b>120 m</b>
                             <br>
-                            I horisonten ser du en vinget skikkelse som flyver over golfbanen. DET VAR EN ØRN! Den lavede et kæmpe dyk og fangede golfkuglen. Du så aldrig den golfkugle igen.
+                            din bold ligger nu på: <b>320m / 750m</b>
+                            <br>
+                            Du mangler at skyde bolden: <b>430m</b></p>
                             
-                        </p>
-                    </div>
-                </div>
+                            <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
+                            <div class="col " style="margin: auto; width: 500px;">
+                                <button class="btn btn-success" id="ScoreBtn"><span class="fa fa-angle"></span>Tag dit næste sving</button>
+                                <button class="btn btn-danger" id="SkipBtn" data-toggle="modal" data-target="#skipCheckModal"><span class="fa fa-angle-double-right"></span> Afslut spil</button>
+                                <!--Felt til manuel indtastning af Par-->
+                                <input type="number"  id="parInput" />
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-8">
+                            <p style="color:white; font-size:18px; width:450px; margin-top:50px;">
+                                Du har en skarp fornemmelse at dette bliver din hole-in-one. Intet kan hamle op med din viljestyrke! I det du laver bevægelserne til at svinge din golfkølle og slår golfkuglen kraftigt. Den flyver henover banen og det går virkelig din vej siden den flyver lige imod golfhullet!
+                                <br>
+                                …
+                                <br>
+                                I horisonten ser du en vinget skikkelse som flyver over golfbanen. DET VAR EN ØRN! Den lavede et kæmpe dyk og fangede golfkuglen. Du så aldrig den golfkugle igen.                               
+                            </p>
+                        </div>
+                    </div>  
                 </div>                
             </div>
             <div class="row">
@@ -78,13 +81,145 @@
                     <div class="progress-bar" style="width:70%">70%</div>
                   </div>
             </div>
-        </div>
+        </div>        
+        
+        <!-- Rules Modal -->
+        <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rulesModalLabel">Regler for RNGolf</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Det er ligesom golf</p>
+                        <p>bare meget sjovere!</p>
+                        <p>Det er den bedste ever golf spil</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
+                    </div>
+                    </div>
+                </div>
+            </div>  
+
+            <!-- Leader Modal -->
+            <div class="modal fade" id="leaderModal" tabindex="-1" role="dialog" aria-labelledby="leaderModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="leaderModalLabel">Her kan du tjekke top 3 score over hele spillet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="3">Top 3 score</th>
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Navn</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>STR</td>
+                                    <td>"3333"</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>INT</td>
+                                    <td>222</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>BOO</td>
+                                    <td>TRUE</td>
+                                </tr>
+                            </tbody>                        
+                        </table>  
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
+                    </div>
+                    </div>
+                </div>
+            </div> 
+            
+            <!-- skipCheck Modal -->
+            <div class="modal fade" id="skipCheckModal" tabindex="-1" role="dialog" aria-labelledby="skipCheckModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="skipCheckModalLabel">Er du sikker på at du vil afslutte dit spil?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Gå tilbage til dit spil</button>
+                            <button class="btn btn-danger" id="SkipBtn" data-toggle="modal" data-target="#skipModal">Afslut spil</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- skip Modal -->
+            <div class="modal fade" id="skipModal" tabindex="-1" role="dialog" aria-labelledby="skipModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="skipModalLabel">Spillet er slut</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="skipTableModal" class="table table-hover table-light table-striped skipBoard">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="3">Top 3 score</th>
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Navn</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>STR</td>
+                                    <td>"3333"</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>INT</td>
+                                    <td>222</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>BOO</td>
+                                    <td>TRUE</td>
+                                </tr>
+                            </tbody>                        
+                        </table>  
+                    </div>
+                    <div class="modal-footer">
+                        <a href="index.htm" class="btn-lg btn-danger display-block">Afslut</a>
+                    </div>
+                </div>
+            </div>
+        </div> 
         <div id="positionFromHole"></div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>   
-        <script src="bundle.js"></script>
-        
-    </body>
-
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>    </body>
 </html>
