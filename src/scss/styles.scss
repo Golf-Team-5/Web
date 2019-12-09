@@ -47,6 +47,10 @@ body{
     font-size: 1.5em;
 }
 
+#LeaderTableModal {
+    margin-left: 0px;
+}
+
 .float{
     float:left;
 }
@@ -102,7 +106,7 @@ body{
     margin: auto;
 }
 
-#btn-rules{
+.btn-bg{
     background-color:rgba(0,0,0,0);
     border:none;
 }
