@@ -2057,6 +2057,42 @@ module.exports = __webpack_require__.p + "index.htm";
 
 /***/ }),
 
+/***/ "./src/js/Score.ts":
+/*!*************************!*\
+  !*** ./src/js/Score.ts ***!
+  \*************************/
+/*! exports provided: GetScoreAndNoOfSwings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetScoreAndNoOfSwings", function() { return GetScoreAndNoOfSwings; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+var scoreCountElement = document.getElementById("scoreCount");
+var swingCountElement = document.getElementById("swingCount");
+function GetScoreAndNoOfSwings(par) {
+    console.log(par);
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
+        params: {
+            Par: par
+        }
+    })
+        .then(function (response) {
+        console.log("Data: " + response.data);
+        scoreCountElement.innerHTML = "Point: " + response.data[0];
+        swingCountElement.innerHTML = "Antal Sving: " + response.data[1];
+    })
+        .catch(function (error) {
+        console.log(Error);
+    });
+}
+
+
+
+/***/ }),
+
 /***/ "./src/js/importapi.ts":
 /*!*****************************!*\
   !*** ./src/js/importapi.ts ***!
@@ -2127,18 +2163,20 @@ function addScoreToTable(res, ele) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+
+//import {AxiosGetSwingData} from './position'
 
 
-_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"];
+_position__WEBPACK_IMPORTED_MODULE_2__["GetHit"];
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
 //element der henter par tallet til beregning af score, fra siden. 
-//let ParInput: HTMLInputElement = <HTMLInputElement>document.getElementById("parInput")
+var ParInput = document.getElementById("parInput");
 //knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
-/* let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ScoreBtn");
-scoreButton.addEventListener("click", function() { GetScoreAndNoOfSwings(Number(ParInput.value))});
- */
+var scoreButton = document.getElementById("ScoreBtn");
+scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
 
 
 /***/ }),
@@ -2158,7 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
-// banelængde, senere kan det statiske tal udskiftes til at vøre mere dynamisk
+// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
 var getDataBtn = document.getElementById('ScoreBtn');
@@ -2173,6 +2211,7 @@ function GetHit() {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
         .then(function (response) {
         totalHits += 1;
+        console.log(response.data);
         // her vises et enkelt slag, plus den samlet længde
         totalDistance += Number(response.data);
         var currentSwing = document.getElementById('current-hit');
