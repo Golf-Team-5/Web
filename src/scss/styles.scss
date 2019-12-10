@@ -41,7 +41,6 @@ body{
    
 }
 
-
 #brand {
     color: white;
     font-size: 1.5em;
@@ -49,6 +48,20 @@ body{
 
 #LeaderTableModal {
     margin-left: 0px;
+}
+ 
+#skipCheckModal {
+    .modal-body {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+#nameErrorMsg {
+    // display: none;
+    margin-top: 15px;
+    opacity: 0;
+    transition: .5s ease;
 }
 
 #message-box{

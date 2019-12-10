@@ -37,6 +37,15 @@ body {
 #LeaderTableModal {
   margin-left: 0px; }
 
+#skipCheckModal .modal-body {
+  display: flex;
+  justify-content: space-evenly; }
+
+#nameErrorMsg {
+  margin-top: 15px;
+  opacity: 0;
+  transition: .5s ease; }
+
 #message-box {
   float: right;
   background-color: rgba(0, 0, 0, 0.5);

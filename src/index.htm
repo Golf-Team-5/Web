@@ -31,7 +31,7 @@
                         </li>
                         <li>                    
                             <button id="btn-leader" type="button" class="nav-item nav-link pull-right btn-bg" data-toggle="modal" data-target="#leaderModal">
-                                <span style="font-size: 40px; line-height: 30px; font-weight: bolder; color:white;" >#</span>
+                                <span><i class="fa fa-trophy fa-2x icon-color" aria-hidden="true"></i></span>
                             </button>
                         </li>              
                     </ul>
@@ -111,24 +111,27 @@
         <div style="background:darkslategray; min-height:300px;"></div>
 
         <!-- start Modal -->
-        <div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
+        <div class="modal fade" id="startModal" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="startModalLabel">For at starte skal vi bruge dit navn</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>*Dit navn kan maks være på 3 bogstaver
-                        <br/>
-                        *Dit navn må ikke indeholde specieltegn</p>
-                    <input placeholder=" skriv dit navn her..."  id="usernameInput" type="text" maxlength="3" required />
-                </div>
-                <div class="modal-footer">
-                    <a class="btn-lg btn-succes display-block" href="playerPage.htm">Start spil</a>
-                </div>
+                    <form name="FormStartGame" action="playerPage.htm">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="startModalLabel">For at starte skal vi bruge dit navn</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>*Dit navn kan maks være på 3 bogstaver
+                                <br/>
+                                *Dit navn må ikke indeholde specieltegn</p>
+                            <input placeholder=" skriv dit navn her..." name="inputName" onclick="" id="usernameInput" type="text" minlength="3" maxlength="3" required />
+                            <p class="alert alert-danger" id="nameErrorMsg"></p> 
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn-lg btn-success display-block" type="submit" onclick="allLetter(document.FormStartGame.inputName)" value="Start spil" >
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -238,5 +241,24 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> 
         <script src="bundle.js"></script>
+        
+        <script>
+            function allLetter(inputtxt)
+            { 
+                var letters = /^[A-Za-z]+$/;
+                if(inputtxt.value.match(letters))
+                {
+                    return true;
+                }
+                else
+                {
+                    event.preventDefault();
+                    document.getElementById('nameErrorMsg').innerHTML = 'Navn kan ikke indeholde tal eller speciel tegn, prøv igen';
+                    document.getElementById('nameErrorMsg').style.opacity = 1;
+                    // alert('Navn kan ikke indeholde tal eller speciel tegn, prøv igen');
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>
