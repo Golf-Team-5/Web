@@ -68,6 +68,9 @@ function Weather(description:string):string
         case "broken clouds":
             weatherImage.src = "./img/Weather-icons-cloud.png"
             return "Overskyet";
+        case "overcast clouds":
+            weatherImage.src = "./img/Weather-icons-heavy-rain.png"
+            return "Gråvejr"
         case "shover rain":
             weatherImage.src = "./img/Weather-icons-rain.png"
             return "Regnvejr";
@@ -84,6 +87,7 @@ function Weather(description:string):string
             weatherImage.src = "./img/Weather-icons-cloud.png"
             return "Tåget";
         default:
-            break;
+            weatherImage.src = "./img/Weather-icons-cloud.png"
+            return "Skyet";
     }
 }
