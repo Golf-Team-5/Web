@@ -27,7 +27,7 @@ body {
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     z-index: -1; }
 
 #brand {
@@ -108,6 +108,28 @@ body {
 #RNGolf {
   color: white; }
 
+#MsgBoxAround {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+#MsgBoxAround p {
+  color: white;
+  font-size: 24px; }
+
+#ScoreBtn {
+  margin-right: 10px; }
+
+#btnNextFinish {
+  margin: auto;
+  margin-top: 50px;
+  width: 500px; }
+
+#MsgOutput {
+  color: white;
+  padding: 10px; }
+
+#MsgOutput p {
+  font-size: 18px !important; }
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   #playButton {
@@ -120,7 +142,24 @@ body {
   .leaderBoard {
     margin-left: 65px; }
   #carouselExampleSlidesOnly {
-    height: 30px; } }
+    height: 30px; }
+  #MsgBoxAround {
+    width: 94%;
+    height: 80%;
+    margin-left: 3%;
+    margin-top: 3%; }
+  #MsgBoxAround p {
+    color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align: center; }
+  #MsgBoxImg {
+    width: 250px;
+    height: 250px;
+    margin-top: 10px;
+    margin-left: 60px; }
+  #MsgOutput {
+    width: 350px; } }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -134,7 +173,17 @@ body {
     margin-top: -20px;
     margin-left: 65px; }
   #carouselExampleSlidesOnly {
-    height: 30px; } }
+    height: 30px; }
+  #MsgBoxAround {
+    width: 750px;
+    height: 520px;
+    margin-left: 0;
+    margin-top: -120px; }
+  #MsgBoxImg {
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    margin-left: 100px; } }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -148,7 +197,16 @@ body {
     margin-top: 50px;
     margin-left: -30px; }
   #carouselExampleSlidesOnly {
-    height: 30px; } }
+    height: 30px; }
+  #MsgBoxAround {
+    width: 750px;
+    height: 520px;
+    margin-top: -120px; }
+  #MsgBoxImg {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    margin-left: 0px; } }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -159,7 +217,17 @@ body {
     width: 150px;
     height: 150px; }
   .leaderBoard {
-    margin-top: 50px; } }
+    margin-top: 50px; }
+  #MsgBoxAround {
+    width: 750px;
+    height: 520px;
+    margin-left: 500px;
+    margin-top: -120px; }
+  #MsgBoxImg {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    margin-left: 0px; } }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
@@ -170,4 +238,14 @@ body {
     width: 150px;
     height: 150px; }
   .leaderBoard {
-    margin-top: 50px; } }
+    margin-top: 50px; }
+  #MsgBoxAround {
+    width: 750px;
+    height: 520px;
+    margin-left: 500px;
+    margin-top: -120px; }
+  #MsgBoxImg {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    margin-left: 0px; } }
