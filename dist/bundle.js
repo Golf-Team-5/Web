@@ -2199,7 +2199,8 @@ function Weather(description) {
             weatherImage.src = "./img/Weather-icons-cloud.png";
             return "Tåget";
         default:
-            break;
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Skyet";
     }
 }
 

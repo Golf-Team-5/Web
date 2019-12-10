@@ -87,6 +87,7 @@ function Weather(description:string):string
             weatherImage.src = "./img/Weather-icons-cloud.png"
             return "Tåget";
         default:
-            break;
+            weatherImage.src = "./img/Weather-icons-cloud.png"
+            return "Skyet";
     }
 }
