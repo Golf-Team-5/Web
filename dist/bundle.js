@@ -2180,6 +2180,9 @@ function Weather(description) {
         case "broken clouds":
             weatherImage.src = "./img/Weather-icons-cloud.png";
             return "Overskyet";
+        case "overcast clouds":
+            weatherImage.src = "./img/Weather-icons-heavy-rain.png";
+            return "Gråvejr";
         case "shover rain":
             weatherImage.src = "./img/Weather-icons-rain.png";
             return "Regnvejr";
