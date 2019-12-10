@@ -39,11 +39,18 @@
             </nav> 
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
-            <!--Weather picture-->
+            <!--Weather picture og data fra api-->
             <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
-                <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
-                <p id="result-weather"></p>
-                <button id="weather-button">Hent vejr</button>
+            <div>
+                <img id="weather-img" class="img-responsive float" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                    <b><span id="city-name"></span><br>
+                    Temperatur: <span id="city-temperature"></span>&#176; C<br>
+                    <span id="city-weather"></span>
+                </b></p>
+                
+                
+            </div>
             </div>
 
             <!--Play-->
