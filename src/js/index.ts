@@ -2,12 +2,13 @@ import { axiosGet } from './importapi'
 //import {AxiosGetSwingData} from './position'
 import {GetScoreAndNoOfSwings} from './Score'
 import {GetHit} from './position'
+import {GetWeather} from './weatherapi'
 
-GetHit
-
-axiosGet();
+//GetHit
+//axiosGet();
 //AxiosGetSwingData();
 
+GetWeather()
 
 //element der henter par tallet til beregning af score, fra siden. 
 let ParInput: HTMLInputElement = <HTMLInputElement>document.getElementById("parInput")

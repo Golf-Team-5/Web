@@ -2093,66 +2093,6 @@ function GetScoreAndNoOfSwings(par) {
 
 /***/ }),
 
-/***/ "./src/js/importapi.ts":
-/*!*****************************!*\
-  !*** ./src/js/importapi.ts ***!
-  \*****************************/
-/*! exports provided: axiosGet */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-
-function axiosGet() {
-    var jsonplaceholderString = "http://jsonplaceholder.typicode.com/todos";
-    // Test URI - test data
-    var playerScoresUri = "http://localhost:64005/api/players";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
-    /*      params: {
-             _limit:5
-         } */
-    })
-        .then(function (response) {
-        // Content Area
-        var mainLeft = document.getElementById('main-left');
-        var mainLeftTable = document.getElementById('myTable');
-        console.log(response.data);
-        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
-        // response er JSON der kommer tilbage fra URI
-        // mainLeft er det element vi tilføjer hvert under-element til
-        addScoreToDOM(response, mainLeft);
-        addScoreToTable(response, mainLeftTable);
-    })
-        .catch(function (err) {
-        console.log(err);
-    });
-}
-function addScoreToDOM(res, ele) {
-    var i = 1;
-    res.data.forEach(function (score) {
-        var titleParagraph = document.createElement("p");
-        titleParagraph.innerHTML = i + score.name + " | " + score.score;
-        ele.appendChild(titleParagraph);
-        i += 1;
-    });
-}
-function addScoreToTable(res, ele) {
-    res.data.forEach(function (score) {
-        var row = ele.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = score.name;
-        cell2.innerHTML = String(score.score);
-    });
-}
-
-
-
-/***/ }),
-
 /***/ "./src/js/index.ts":
 /*!*************************!*\
   !*** ./src/js/index.ts ***!
@@ -2162,67 +2102,102 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
-/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
-
+/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 //import {AxiosGetSwingData} from './position'
 
 
-_position__WEBPACK_IMPORTED_MODULE_2__["GetHit"];
-Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
+//GetHit
+//axiosGet();
 //AxiosGetSwingData();
+Object(_weatherapi__WEBPACK_IMPORTED_MODULE_1__["GetWeather"])();
 //element der henter par tallet til beregning af score, fra siden. 
 var ParInput = document.getElementById("parInput");
 //knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
 var scoreButton = document.getElementById("ScoreBtn");
-scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
+scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_0__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
 
 
 /***/ }),
 
-/***/ "./src/js/position.ts":
-/*!****************************!*\
-  !*** ./src/js/position.ts ***!
-  \****************************/
-/*! exports provided: GetHit */
+/***/ "./src/js/weatherapi.ts":
+/*!******************************!*\
+  !*** ./src/js/weatherapi.ts ***!
+  \******************************/
+/*! exports provided: GetWeather */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetHit", function() { return GetHit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetWeather", function() { return GetWeather; });
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
-// Uri til et slag fra Rest Service
-var Uri = "http://localhost:52549/api/swingdata";
-// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
-var courseLength = 1000;
-// reference til Næste slag knappen, samt dens "listener"
-var getDataBtn = document.getElementById('ScoreBtn');
-getDataBtn.addEventListener("click", GetHit);
-// her skrives banelængden ud
-var course = document.getElementById('course-lenght');
-course.innerHTML = String(courseLength);
-var totalHits = 0;
-var totalDistance = 0;
-// funktionen henter et slag fra Rest Service ved hjælp af Axios
-function GetHit() {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
-        .then(function (response) {
-        totalHits += 1;
-        console.log(response.data);
-        // her vises et enkelt slag, plus den samlet længde
-        totalDistance += Number(response.data);
-        var currentSwing = document.getElementById('current-hit');
-        currentSwing.innerHTML = String(response.data);
-        var currentDistance = document.getElementById('current-distance');
-        currentDistance.innerHTML = String(totalDistance);
+// Uri til 3. parts api
+var Uri = "https://api.openweathermap.org/data/2.5/weather";
+// Axiosfunktion til at hente api'en med en Get.
+// Som parameter bruges id til at hente byen, units til at hente celsius grader og appid er vores apikey.
+function GetWeather() {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri, {
+        params: {
+            //q: "Roskilde", - Bynavn, eller by-id
+            id: 2614481,
+            units: "metric",
+            appid: "287eaa6bc17a135ce846e22a4d9418f2"
+        }
     })
-        // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
-        .catch(function (error) {
-        console.log(error);
+        .then(function (res) {
+        console.log(res.data);
+        AddWeatherToPage(res);
+    })
+        .catch(function (err) {
+        console.log(err);
     });
+}
+// Denne metode kaldes i vores Axios Get metode, 
+// den opretter nogle HTML elementer som vi bruger til at udskrive data i.
+function AddWeatherToPage(res) {
+    var cityName = document.getElementById('city-name');
+    var cityTemperature = document.getElementById('city-temperature');
+    var cityWeather = document.getElementById('city-weather');
+    cityName.innerHTML = res.data.name;
+    cityTemperature.innerHTML = String(res.data.main.temp);
+    cityWeather.innerHTML = Weather(res.data.weather[0].description);
+}
+// Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
+function Weather(description) {
+    var weatherImage = document.getElementById("weather-img");
+    switch (description) {
+        case "clear sky":
+            weatherImage.src = "./img/Weather-icons-sun.png";
+            return "Skyfrit";
+        case "few clouds":
+            weatherImage.src = "./img/Weather-icons-cloud-sun.png";
+            return "Let skyet";
+        case "scattered clouds":
+            weatherImage.src = "./img/Weather-icons-rain-sun.png";
+            return "Overskyet";
+        case "broken clouds":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Overskyet";
+        case "shover rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "thunderstorm":
+            weatherImage.src = "./img/Weather-icons-thunder.png";
+            return "Tordenvejr";
+        case "snow":
+            weatherImage.src = "./img/Weather-icons-sun-snow.png";
+            return "Snevejr";
+        case "mist":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Tåget";
+        default:
+            break;
+    }
 }
 
 
