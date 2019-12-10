@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="da">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,7 @@
     <body>
         <div id="bg" class="img-responsive"></div>
         <div class="Container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark col-sm-12">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <img id="logo" src="/img/logo-3-tpbg.PNG" alt="RNGolf logo">
@@ -39,39 +40,42 @@
         <div class="container-fluid">     
             <div class="row">
                <!--Weather picture-->
-                <div class="col-md-1 col-lg-1 col-sm-1">
+                <div class="col-md-12 col-lg-1 col-sm-12">
                     <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
                 </div>
-                <div style="width: 750px; height: 520px; background-color: rgba(0,0,0,0.5); margin-top: -120px; margin-left: 500px;" class="col-md-8 col-lg-8 col-lg-8 float">
+                <div id="MsgBoxAround" class="col-md-12 col-lg-8 col-sm-12 float">
                     <div class="row">                    
                         <!-- Message Box  -->
-                        <div class="col-md-4 col-lg-4 col-sm-4">
-                            <img src="img/msg-Eagle-with-the-ball.jpg" style="width:300px; height: 300px; margin-top:10px;"/>
+                        <div class="col-md-4 col-lg-4 col-sm-12 ">
+                            <img id="MsgBoxImg" src="img/msg-Eagle-with-the-ball.jpg"/>
                             <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
-                            <p id="scoreCount" style="color:white;"> points</p> <p id="swingCount"></p>
+                            <p id="scoreCount"><b>Score:  <br/><span id="swingCount">500</span></b></p>
                             <br>
-                            <p style="color:white;">Du har skudt <b>120 m</b>
+                            <p>Du har skudt: <b><span id="current-hit"></span> m</b>
                             <br>
-                            Din bold ligger nu på: <b>320m / 750m</b>
-                            <br>
-                            Du mangler at skyde bolden: <b>430m</b></p>
+                            din bold ligger nu på: <span id="current-distance"></span> / <span id="course-lenght"></span>
+                            </p>
                             
+                            
+                        </div>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-sm-12">
+                            <div id="MsgOutput">
+                                <h3>PAS PÅ!!!</h3>
+                                <p>
+                                    Du har en skarp fornemmelse at dette bliver din hole-in-one. Intet kan hamle op med din viljestyrke! I det du laver bevægelserne til at svinge din golfkølle og slår golfkuglen kraftigt. Den flyver henover banen og det går virkelig din vej siden den flyver lige imod golfhullet!
+                                    <br>
+                                    …
+                                    <br>
+                                    I horisonten ser du en vinget skikkelse som flyver over golfbanen. DET VAR EN ØRN! Den lavede et kæmpe dyk og fangede golfkuglen. Du så aldrig den golfkugle igen.                               
+                                </p>
+                            </div>
                             <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
-                            <div class="col " style="margin: auto; width: 500px;">
+                            <div id="btnNextFinish">
                                 <button class="btn btn-success" id="ScoreBtn"><span class="fa fa-angle"></span> Tag dit næste sving</button>
                                 <button class="btn btn-danger" id="SkipBtn" data-toggle="modal" data-target="#skipCheckModal"><span class="fa fa-angle-double-right"></span> Afslut spil</button>
                                 <!--Felt til manuel indtastning af Par-->
                                 <!-- <input type="number"  id="parInput" /> -->
                             </div>
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-8">
-                            <p style="color:white; font-size:18px; width:450px; margin-top:50px;">
-                                Du har en skarp fornemmelse at dette bliver din hole-in-one. Intet kan hamle op med din viljestyrke! I det du laver bevægelserne til at svinge din golfkølle og slår golfkuglen kraftigt. Den flyver henover banen og det går virkelig din vej siden den flyver lige imod golfhullet!
-                                <br>
-                                …
-                                <br>
-                                I horisonten ser du en vinget skikkelse som flyver over golfbanen. DET VAR EN ØRN! Den lavede et kæmpe dyk og fangede golfkuglen. Du så aldrig den golfkugle igen.                               
-                            </p>
                         </div>
                     </div>  
                 </div>                
@@ -85,7 +89,7 @@
         
          <!-- Rules Modal -->
          <div class="modal large fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="rulesModalLabel">Spillets fremgangsmåde</h5>
@@ -96,7 +100,7 @@
                 <div class="modal-body">
                     <p>
                         <b>Navn</b><br/>
-                        For at kunne starte et spil skal man have indtastet sit navn. RNGolf køre på de gamle akade principper 
+                        For at kunne starte et spil skal man have indtastet sit navn. RNGolf køre på de gamle arkade principper 
                         og derfor skal navnet kun være på 3 bogstaver.
                     </p>
                     <p>
@@ -105,23 +109,33 @@
                         Herefter slår man med sin Pi, jo hårder der bliver slået desto længere vil golfbolden flyve. 
                     </p>
                     <p>
-                        <b>Events</b><br/>
-                        Under spillet kan der opstå events der kan ændre din score. Disse events er tilfældige, 
+                        <b>Scenarier</b><br/>
+                        Under spillet kan der opstå scenarier der kan ændre din score. Disse scenarier er tilfældige, 
                         så sørg for altid at gøre dit bedste! Her er det nemlig ikke altid den bedste der vinder...
                     </p>
                     <p>
                         <b>Score</b><br/>
-                        Din score vil blive beregnet ved hjælp af din mængde af golfslag for at få bolden i hul, samt evt. events du vil møde undervejs.<br>
-                        I modsætning af almindelig gold, gælder det her om at få flest point - den højeste score som muligt.
+                        Din score vil blive beregnet ved hjælp af dit antal af slag for at få bolden i hul, samt evt. scenarier du vil møde undervejs.<br>
+                        I modsætning til almindelig golf, gælder det her om at få flest point - den højeste score som muligt.
                         <br/>
                         <br/>
-                        2000 points = Hole-In-One
+                        <b>
+                           <i> Point givet ved banens afslutning:</i> 
+                        </b> <br/>
+                        2000 point = Hole-In-One
                         <br/>
-                        1000 points = Hvis antal af slag er mindre end Par                        
+                        1000 point = Hvis antal af slag er mindre end Par *                       
                         <br/>
-                        -100 points = Negative events
                         <br/>
-                        100 points = Positive evnents  
+                        <b>
+                           <i> Point givet ved scenarier: </i>
+                        </b> <br>
+                        -100 point = Negative scenarier
+                        <br/>
+                        100 point = Positive scenarier  
+                    </p>
+                    <p>
+                        <i>* Par = Antal slag som er forventet til gennemføresel af banen.</i>
                     </p>
                     <p>
                         <b>Forlad spil</b><br/>
@@ -129,7 +143,7 @@
                     </p>                    
                 </div>
                 <div class="modal-footer">
-                    <p><b>God fornøjelse med dit spil!!</b></p>
+                    <p><b>God fornøjelse med dit spil!</b></p>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
                 </div>
                 </div>
