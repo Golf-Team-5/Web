@@ -2164,9 +2164,12 @@ function addScoreToTable(res, ele) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
 /* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 
 //import {AxiosGetSwingData} from './position'
 
+
+_position__WEBPACK_IMPORTED_MODULE_2__["GetHit"];
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
 //element der henter par tallet til beregning af score, fra siden. 
@@ -2174,6 +2177,53 @@ var ParInput = document.getElementById("parInput");
 //knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
 var scoreButton = document.getElementById("ScoreBtn");
 scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
+
+
+/***/ }),
+
+/***/ "./src/js/position.ts":
+/*!****************************!*\
+  !*** ./src/js/position.ts ***!
+  \****************************/
+/*! exports provided: GetHit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetHit", function() { return GetHit; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+// Uri til et slag fra Rest Service
+var Uri = "http://localhost:52549/api/swingdata";
+// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
+var courseLength = 1000;
+// reference til Næste slag knappen, samt dens "listener"
+var getDataBtn = document.getElementById('ScoreBtn');
+getDataBtn.addEventListener("click", GetHit);
+// her skrives banelængden ud
+var course = document.getElementById('course-lenght');
+course.innerHTML = String(courseLength);
+var totalHits = 0;
+var totalDistance = 0;
+// funktionen henter et slag fra Rest Service ved hjælp af Axios
+function GetHit() {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
+        .then(function (response) {
+        totalHits += 1;
+        console.log(response.data);
+        // her vises et enkelt slag, plus den samlet længde
+        totalDistance += Number(response.data);
+        var currentSwing = document.getElementById('current-hit');
+        currentSwing.innerHTML = String(response.data);
+        var currentDistance = document.getElementById('current-distance');
+        currentDistance.innerHTML = String(totalDistance);
+    })
+        // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
+        .catch(function (error) {
+        console.log(error);
+    });
+}
 
 
 /***/ }),

@@ -50,11 +50,10 @@
                             <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
                             <p id="scoreCount" style="color:white;"> points</p> <p id="swingCount"></p>
                             <br>
-                            <p style="color:white;">Du har skudt <b>120 m</b>
+                            <p style="color:white;">Du har skudt <b><span id="current-hit"></span> m</b>
                             <br>
-                            din bold ligger nu på: <b>320m / 750m</b>
-                            <br>
-                            Du mangler at skyde bolden: <b>430m</b></p>
+                            din bold ligger nu på: <span id="current-distance"></span> / <span id="course-lenght"></span>
+                            </p>
                             
                             <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
                             <div class="col " style="margin: auto; width: 500px;">
