@@ -4,11 +4,15 @@ import {GetScoreAndNoOfSwings} from './Score'
 import {GetHit} from './position'
 import {GetWeather} from './weatherapi'
 
+
 GetHit()
+
+
 //axiosGet();
 //AxiosGetSwingData();
 GetWeather()
 
+GetWeather()
 
 //element der henter par tallet til beregning af score, fra siden. 
 let ParInput: HTMLInputElement = <HTMLInputElement>document.getElementById("parInput")

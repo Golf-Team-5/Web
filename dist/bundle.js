@@ -2093,6 +2093,7 @@ function GetScoreAndNoOfSwings(par) {
 
 /***/ }),
 
+
 /***/ "./src/js/events.ts":
 /*!**************************!*\
   !*** ./src/js/events.ts ***!
@@ -2153,6 +2154,7 @@ function getRandomInt(min, max) {
 
 /***/ }),
 
+
 /***/ "./src/js/index.ts":
 /*!*************************!*\
   !*** ./src/js/index.ts ***!
@@ -2163,6 +2165,7 @@ function getRandomInt(min, max) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+
 /* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 //import {AxiosGetSwingData} from './position'
@@ -2173,6 +2176,16 @@ Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
 //axiosGet();
 //AxiosGetSwingData();
 Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
+
+/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
+//import {AxiosGetSwingData} from './position'
+
+
+//GetHit
+//axiosGet();
+//AxiosGetSwingData();
+Object(_weatherapi__WEBPACK_IMPORTED_MODULE_1__["GetWeather"])();
+
 //element der henter par tallet til beregning af score, fra siden. 
 var ParInput = document.getElementById("parInput");
 //knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
@@ -2182,19 +2195,20 @@ scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPOR
 
 /***/ }),
 
-/***/ "./src/js/position.ts":
-/*!****************************!*\
-  !*** ./src/js/position.ts ***!
-  \****************************/
-/*! exports provided: GetHit */
+/***/ "./src/js/weatherapi.ts":
+/*!******************************!*\
+  !*** ./src/js/weatherapi.ts ***!
+  \******************************/
+/*! exports provided: GetWeather */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetHit", function() { return GetHit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetWeather", function() { return GetWeather; });
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
+
 
 
 // Uri til et slag fra Rest Service
@@ -2223,11 +2237,77 @@ function GetHit() {
         currentSwing.innerHTML = String(response.data);
         var currentDistance = document.getElementById('current-distance');
         currentDistance.innerHTML = String(totalDistance);
+
+// Uri til 3. parts api
+var Uri = "https://api.openweathermap.org/data/2.5/weather";
+// Axiosfunktion til at hente api'en med en Get.
+// Som parameter bruges id til at hente byen, units til at hente celsius grader og appid er vores apikey.
+function GetWeather() {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri, {
+        params: {
+            //q: "Roskilde", - Bynavn, eller by-id
+            id: 2614481,
+            units: "metric",
+            appid: "287eaa6bc17a135ce846e22a4d9418f2"
+        }
+
     })
-        // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
-        .catch(function (error) {
-        console.log(error);
+        .then(function (res) {
+        console.log(res.data);
+        AddWeatherToPage(res);
+    })
+        .catch(function (err) {
+        console.log(err);
     });
+}
+// Denne metode kaldes i vores Axios Get metode, 
+// den opretter nogle HTML elementer som vi bruger til at udskrive data i.
+function AddWeatherToPage(res) {
+    var cityName = document.getElementById('city-name');
+    var cityTemperature = document.getElementById('city-temperature');
+    var cityWeather = document.getElementById('city-weather');
+    cityName.innerHTML = res.data.name;
+    cityTemperature.innerHTML = String(res.data.main.temp);
+    cityWeather.innerHTML = Weather(res.data.weather[0].description);
+}
+// Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
+function Weather(description) {
+    var weatherImage = document.getElementById("weather-img");
+    switch (description) {
+        case "clear sky":
+            weatherImage.src = "./img/Weather-icons-sun.png";
+            return "Skyfrit";
+        case "few clouds":
+            weatherImage.src = "./img/Weather-icons-cloud-sun.png";
+            return "Let skyet";
+        case "scattered clouds":
+            weatherImage.src = "./img/Weather-icons-rain-sun.png";
+            return "Overskyet";
+        case "broken clouds":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Overskyet";
+        case "overcast clouds":
+            weatherImage.src = "./img/Weather-icons-heavy-rain.png";
+            return "Gråvejr";
+        case "shover rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "thunderstorm":
+            weatherImage.src = "./img/Weather-icons-thunder.png";
+            return "Tordenvejr";
+        case "snow":
+            weatherImage.src = "./img/Weather-icons-sun-snow.png";
+            return "Snevejr";
+        case "mist":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Tåget";
+        default:
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Skyet";
+    }
 }
 
 
