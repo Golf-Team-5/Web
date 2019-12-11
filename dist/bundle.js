@@ -2093,62 +2093,62 @@ function GetScoreAndNoOfSwings(par) {
 
 /***/ }),
 
-/***/ "./src/js/importapi.ts":
-/*!*****************************!*\
-  !*** ./src/js/importapi.ts ***!
-  \*****************************/
-/*! exports provided: axiosGet */
+/***/ "./src/js/events.ts":
+/*!**************************!*\
+  !*** ./src/js/events.ts ***!
+  \**************************/
+/*! exports provided: GetEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-
-function axiosGet() {
-    var jsonplaceholderString = "http://jsonplaceholder.typicode.com/todos";
-    // Test URI - test data
-    var playerScoresUri = "http://localhost:64005/api/players";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
-    /*      params: {
-             _limit:5
-         } */
-    })
-        .then(function (response) {
-        // Content Area
-        var mainLeft = document.getElementById('main-left');
-        var mainLeftTable = document.getElementById('myTable');
-        console.log(response.data);
-        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
-        // response er JSON der kommer tilbage fra URI
-        // mainLeft er det element vi tilføjer hvert under-element til
-        addScoreToDOM(response, mainLeft);
-        addScoreToTable(response, mainLeftTable);
-    })
-        .catch(function (err) {
-        console.log(err);
-    });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetEvent", function() { return GetEvent; });
+var eventList = [
+    "Du står fuld fokuseret og begynder at tag bevægelserne i at gøre klar til at svinge din golfkølle. Du holder øje med kun golfkuglen nu og skal lige til at svinge golfkøllen, MEN du finder i øjenkrogen et lille egern!<br>...<br>  I det mister du alt form for koncentration samt du svinger golfkøllen.",
+    "Fast besluttet på at dette bliver dit heldige slag, så kigger du kort på golfkuglen og derefter flaget til golfhullet, du bemærkede at der skulle virkelig kraft på dit næste slag. Du begynder at lave bevægelserne til at tag svinget og slår golfkuglen med alt din kraft!<br>…<br> Du ser spændt ud over golfbanen i håb om den blev skudt langt nok, men du kan ikke se den. Du tager et kort blik ned, hvor golfkuglen er skudt ned i jorden.",
+    "I håb om at du kan lave noget fremskridt på banen, så har du et stærk fokus på golfkuglen og den rute som kuglen skal følge for at komme i mål. I det du lavede bevægelserne for at slå golfkuglen, så ser du noget som kommer flyvende hen imod dig. Du kan kun lige ane 2 store vinger.<br>…<br> DET VAR EN ØRN. Du mister grebet på golfkøllen og springer ned på jorden. Ørn lavede et dyk og snuppede golfkuglen og fløj væk med golfkuglen. Ørnen tabte kuglen tættere på hullet.",
+    "Fuld fokuseret havde du øje på golfkuglen. Du havde på fornemmelsen dette bliver dit heldige sving. Du kastede et kort blik på flaget til golfhullet. Du begyndte at lave bevægelserne til svinge golfkøllen, i det millisekund du skulle til at ramme golfkuglen bliver du blindet af solens skær.<br>… <br> Du rammer luften.",
+    "Fuld af selvtillid kigger du over golfbanen. Dette er intet i forhold til dine evner. Du gør bevægelserne til det næste sving. I det du skal til at svinge hører du en skrækkelig lyd som ødelægger alt form for koncentration, det var en MÅGE!<br>…<br> Du svinger ikke efter golfkuglen mere, men den forbandede måge!",
+    "Du kan mærke en kraftig vind, men intet er fortabt endnu siden det er medvind! Du tager chancen i håb om kuglen ville blive skudt længere end forventet. Du laver bevægelserne til at svinge golfkøllen og du rammer lige på!<br>…<br> Golfkuglen fløj +400 meter.",
+    "Du kan mærke gud er med dig. Du føler dig kraftfuld og har potentiale til at gå udover dine egne forventninger. I det du begynder at lave bevægelserne for at svinge, ser du en solstråle ned fra skyede himmel som lander på dig. Du svinger med alle dine kræfter! <br>…<br> Golfkuglen flyver som aldrig før. Det blev en Hole-In-One.",
+    "Du føler dig kraftfuld, du er selvsikker på at dit næste slag vil blive en Hole-In-One. Du begynder at lave bevægelserne til at lave slaget. I det du svinger kan du mærke en form for energi som du aldrig har følt før. Da du rammer golfkuglen kan du se gnister i golfkøllen. Der er lyden af et kæmpe brag og golfkuglen flyver med utrolig kraft! <br> …<br> Golfkuglen flyver ud i horisonten…",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
+    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang."
+];
+var imageUrilist = [
+    "./img/msg-hit-a-pidgen.png",
+    "./img/msg-earth.jpg",
+    "./img/msg-Eagle-steales-the-ball.jpg",
+    "./img/msg-stickman-misses.jpg",
+    "./img/msg-seagull-with-golfball.jpg",
+    "./img/golf-course-bg.jpg",
+    "./img/",
+    "./img/msg-moon.jpg",
+    "./img/golf-course-bg.jpg"
+];
+function GetEvent() {
+    var eventOutput = document.getElementById("event");
+    var eventImage = document.getElementById('MsgBoxImg');
+    var index = getRandomInt(0, eventList.length);
+    eventOutput.innerHTML = eventList[index];
+    if (index >= 0 && index < 9) {
+        eventImage.src = imageUrilist[index];
+    }
+    else {
+        eventImage.src = imageUrilist[8];
+    }
 }
-function addScoreToDOM(res, ele) {
-    var i = 1;
-    res.data.forEach(function (score) {
-        var titleParagraph = document.createElement("p");
-        titleParagraph.innerHTML = i + score.name + " | " + score.score;
-        ele.appendChild(titleParagraph);
-        i += 1;
-    });
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-function addScoreToTable(res, ele) {
-    res.data.forEach(function (score) {
-        var row = ele.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = score.name;
-        cell2.innerHTML = String(score.score);
-    });
-}
-
 
 
 /***/ }),
@@ -2162,21 +2162,22 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
-/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
-
+/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 //import {AxiosGetSwingData} from './position'
 
 
-_position__WEBPACK_IMPORTED_MODULE_2__["GetHit"];
-Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
+
+Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
+//axiosGet();
 //AxiosGetSwingData();
+Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
 //element der henter par tallet til beregning af score, fra siden. 
 var ParInput = document.getElementById("parInput");
 //knap der kalder GetScoreAndNoOfSwings metoden med ParInput. 
 var scoreButton = document.getElementById("ScoreBtn");
-scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_1__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
+scoreButton.addEventListener("click", function () { Object(_Score__WEBPACK_IMPORTED_MODULE_0__["GetScoreAndNoOfSwings"])(Number(ParInput.value)); });
 
 
 /***/ }),
@@ -2193,6 +2194,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetHit", function() { return GetHit; });
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
+
 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
@@ -2210,6 +2213,8 @@ var totalDistance = 0;
 function GetHit() {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
         .then(function (response) {
+        // GetEvent skal hente en random event fra eventList.
+        Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
         totalHits += 1;
         console.log(response.data);
         // her vises et enkelt slag, plus den samlet længde
@@ -2223,6 +2228,93 @@ function GetHit() {
         .catch(function (error) {
         console.log(error);
     });
+}
+
+
+/***/ }),
+
+/***/ "./src/js/weatherapi.ts":
+/*!******************************!*\
+  !*** ./src/js/weatherapi.ts ***!
+  \******************************/
+/*! exports provided: GetWeather */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetWeather", function() { return GetWeather; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+// Uri til 3. parts api
+var Uri = "https://api.openweathermap.org/data/2.5/weather";
+// Axiosfunktion til at hente api'en med en Get.
+// Som parameter bruges id til at hente byen, units til at hente celsius grader og appid er vores apikey.
+function GetWeather() {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri, {
+        params: {
+            //q: "Roskilde", - Bynavn, eller by-id
+            id: 2614481,
+            units: "metric",
+            appid: "287eaa6bc17a135ce846e22a4d9418f2"
+        }
+    })
+        .then(function (res) {
+        console.log(res.data);
+        AddWeatherToPage(res);
+    })
+        .catch(function (err) {
+        console.log(err);
+    });
+}
+// Denne metode kaldes i vores Axios Get metode, 
+// den opretter nogle HTML elementer som vi bruger til at udskrive data i.
+function AddWeatherToPage(res) {
+    var cityName = document.getElementById('city-name');
+    var cityTemperature = document.getElementById('city-temperature');
+    var cityWeather = document.getElementById('city-weather');
+    cityName.innerHTML = res.data.name;
+    cityTemperature.innerHTML = String(res.data.main.temp);
+    cityWeather.innerHTML = Weather(res.data.weather[0].description);
+}
+// Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
+function Weather(description) {
+    var weatherImage = document.getElementById("weather-img");
+    switch (description) {
+        case "clear sky":
+            weatherImage.src = "./img/Weather-icons-sun.png";
+            return "Skyfrit";
+        case "few clouds":
+            weatherImage.src = "./img/Weather-icons-cloud-sun.png";
+            return "Let skyet";
+        case "scattered clouds":
+            weatherImage.src = "./img/Weather-icons-rain-sun.png";
+            return "Overskyet";
+        case "broken clouds":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Overskyet";
+        case "overcast clouds":
+            weatherImage.src = "./img/Weather-icons-heavy-rain.png";
+            return "Gråvejr";
+        case "shover rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "rain":
+            weatherImage.src = "./img/Weather-icons-rain.png";
+            return "Regnvejr";
+        case "thunderstorm":
+            weatherImage.src = "./img/Weather-icons-thunder.png";
+            return "Tordenvejr";
+        case "snow":
+            weatherImage.src = "./img/Weather-icons-sun-snow.png";
+            return "Snevejr";
+        case "mist":
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Tåget";
+        default:
+            weatherImage.src = "./img/Weather-icons-cloud.png";
+            return "Skyet";
+    }
 }
 
 

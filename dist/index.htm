@@ -39,9 +39,18 @@
             </nav> 
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
-            <!--Weather picture-->
+            <!--Weather picture og data fra api-->
             <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
-                <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+            <div>
+                <img id="weather-img" class="img-responsive float" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                    <b><span id="city-name"></span><br>
+                    Temperatur: <span id="city-temperature"></span>&#176; C<br>
+                    <span id="city-weather"></span>
+                </b></p>
+                
+                
+            </div>
             </div>
 
             <!--Play-->
@@ -136,8 +145,8 @@
             </div>
         </div>
 
-        <!-- Rules Modal -->
-        <div class="modal large fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+         <!-- Rules Modal -->
+         <div class="modal large fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg  modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -149,7 +158,7 @@
                 <div class="modal-body">
                     <p>
                         <b>Navn</b><br/>
-                        For at kunne starte et spil skal man have indtastet sit navn. RNGolf køre på de gamle akade principper 
+                        For at kunne starte et spil skal man have indtastet sit navn. RNGolf køre på de gamle arkade principper 
                         og derfor skal navnet kun være på 3 bogstaver.
                     </p>
                     <p>
@@ -158,23 +167,33 @@
                         Herefter slår man med sin Pi, jo hårder der bliver slået desto længere vil golfbolden flyve. 
                     </p>
                     <p>
-                        <b>Events</b><br/>
-                        Under spillet kan der opstå events der kan ændre din score. Disse events er tilfældige, 
+                        <b>Scenarier</b><br/>
+                        Under spillet kan der opstå scenarier der kan ændre din score. Disse scenarier er tilfældige, 
                         så sørg for altid at gøre dit bedste! Her er det nemlig ikke altid den bedste der vinder...
                     </p>
                     <p>
                         <b>Score</b><br/>
-                        Din score vil blive beregnet ved hjælp af din mængde af golfslag for at få bolden i hul, samt evt. events du vil møde undervejs.<br>
-                        I modsætning af almindelig gold, gælder det her om at få flest point - den højeste score som muligt.
+                        Din score vil blive beregnet ved hjælp af dit antal af slag for at få bolden i hul, samt evt. scenarier du vil møde undervejs.<br>
+                        I modsætning til almindelig golf, gælder det her om at få flest point - den højeste score som muligt.
                         <br/>
                         <br/>
-                        2000 points = Hole-In-One
+                        <b>
+                           <i> Point givet ved banens afslutning:</i> 
+                        </b> <br/>
+                        2000 point = Hole-In-One
                         <br/>
-                        1000 points = Hvis antal af slag er mindre end Par                        
+                        1000 point = Hvis antal af slag er mindre end Par *                       
                         <br/>
-                        -100 points = Negative events
                         <br/>
-                        100 points = Positive evnents  
+                        <b>
+                           <i> Point givet ved scenarier: </i>
+                        </b> <br>
+                        -100 point = Negative scenarier
+                        <br/>
+                        100 point = Positive scenarier  
+                    </p>
+                    <p>
+                        <i>* Par = Antal slag som er forventet til gennemføresel af banen.</i>
                     </p>
                     <p>
                         <b>Forlad spil</b><br/>
@@ -182,12 +201,13 @@
                     </p>                    
                 </div>
                 <div class="modal-footer">
-                    <p><b>God fornøjelse med dit spil!!</b></p>
+                    <p><b>God fornøjelse med dit spil!</b></p>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Luk</button>
                 </div>
                 </div>
             </div>
         </div>  
+
 
         <!-- Leader Modal -->
         <div class="modal fade" id="leaderModal" tabindex="-1" role="dialog" aria-labelledby="leaderModalLabel" aria-hidden="true">
