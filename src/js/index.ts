@@ -4,9 +4,13 @@ import {GetScoreAndNoOfSwings} from './Score'
 import {GetHit} from './position'
 import {GetWeather} from './weatherapi'
 
-//GetHit
+
+GetHit()
+
+
 //axiosGet();
 //AxiosGetSwingData();
+GetWeather()
 
 GetWeather()
 
