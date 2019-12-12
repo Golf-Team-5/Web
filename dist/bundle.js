@@ -2186,7 +2186,7 @@ function AddWeatherToPage(res) {
     var cityTemperature = document.getElementById('city-temperature');
     var cityWeather = document.getElementById('city-weather');
     cityName.innerHTML = res.data.name;
-    cityTemperature.innerHTML = String(res.data.main.temp);
+    cityTemperature.innerHTML = String(Math.floor(res.data.main.temp));
     cityWeather.innerHTML = Weather(res.data.weather[0].description);
 }
 // Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
