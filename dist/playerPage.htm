@@ -48,7 +48,6 @@
                         <!-- Message Box  -->
                         <div class="col-md-4 col-lg-4 col-sm-12">
                             <img id="MsgBoxImg" src="img/msg-GameStart.jpg" alt="message picture"/>
-
                             <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
                             <p id="scoreCount"><b>Score:  <br/><span id="swingCount">500</span></b></p>
                             <br>
@@ -64,6 +63,7 @@
                                 <h3>Velkommen til RNGolf</h3>
                                 <p id="event">
                                     Du er blevet inviteret til en oplevelse som du vil huske i årvis. Målet er at du skal komme ud som nr. 1 og bringe ærer til din familie. Du vil blive udsat for forhindringer, katastrofer, gudernes vrede og velsignelse. Kan du leve op til disse forventninger?! <br>VÆRSGO OG GIV DET ET FORSØG!
+
                                     <br>
                                     <br>
                                     Du er nu klar til at starte dit bedste spil du nogensinde har prøvet!
@@ -74,7 +74,6 @@
                             <!-- Knap til at kalde GetScoreAndNoOfSwings metoden i Score.ts via Index.ts -->
                             <div id="btnNextFinish">
                                 <button class="btn btn-success" id="ScoreBtn"><span class="fa fa-angle"></span> Tag et sving</button>
-                                <button class="btn btn-primary" id="NextCourseBtn"><span class="fa fa-angle-double-right"></span> Afslut bane</button>
                                 <button class="btn btn-danger" id="SkipBtn" data-toggle="modal" data-target="#skipCheckModal"><span class="fa fa-angle-double-right"></span> Afslut spil</button>
                                 <!--Felt til manuel indtastning af Par-->
                                 <!-- <input type="number"  id="parInput" /> -->
@@ -82,11 +81,6 @@
                         </div>
                     </div>  
                 </div>                
-            </div>
-            <div class="row">
-                <div class="progress" style="width:800px; margin:auto; margin-top: 50px;">
-                    <div class="progress-bar" style="width:70%">70%</div>
-                  </div>
             </div>
         </div>        
         
@@ -287,11 +281,10 @@
         </div> 
         <!--Next course Modal-->
         <div id="nextCourseModal">
-                <div class="modal-dialog" role="document">
+                <div id="nextCourseModal-box" class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="nextCourseModalLabel">Banen er fuldført</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

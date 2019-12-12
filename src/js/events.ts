@@ -27,8 +27,8 @@ let imageUrilist:string[]=
     "./img/msg-Eagle-steales-the-ball.jpg",
     "./img/msg-stickman-misses.jpg",
     "./img/msg-seagull-with-golfball.jpg",
-    "./img/golf-course-bg.jpg",
-    "./img/",
+    "./img/msg-vind-takes-the-ball.jpg",
+    "./img/msg-golf-hole-in-one.jpg",
     "./img/msg-moon.jpg",
     "./img/golf-course-bg.jpg"
 ]

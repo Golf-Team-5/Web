@@ -24,7 +24,7 @@ function GetScoreAndNoOfSwings(par: number, hits: number)
         console.log("Data: "+ response.data)
         const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
 
-        pScore.innerHTML = "Point: " + response.data
+        pScore.innerHTML = response.data
     })
     .catch(function (error: AxiosError) {
         console.log(Error);
