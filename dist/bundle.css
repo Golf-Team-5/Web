@@ -126,13 +126,17 @@ body, html {
 
 #message-box {
   float: right;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: black;
   margin: 0px 500px 0 0;
   padding: 10px; }
 
 #nextCourseModal {
+  width: 100%;
+  height: 120%;
   display: none;
-  margin-top: -700px; }
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-top: -700px;
+  padding: 150px; }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
