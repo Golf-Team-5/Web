@@ -2210,8 +2210,10 @@ var totalDistance = 0;
 function GetHit() {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
         .then(function (response) {
-        // GetEvent skal hente en random event fra eventList.
-        Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
+        if (totalDistance > 0) {
+            // GetEvent skal hente en random event fra eventList.
+            Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
+        }
         totalHits += 1;
         console.log(response.data);
         // her vises et enkelt slag, plus den samlet længde
@@ -2250,10 +2252,14 @@ function EndScore() {
     var pName = document.getElementById('nameTotal');
     var pSwing = document.getElementById('swingCountTotal');
     var pScore = document.getElementById('scoreCountTotal');
+    var pBtnScore = document.getElementById('ScoreBtn');
+    var pBtnSkip = document.getElementById('SkipBtn');
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     Object(_Score__WEBPACK_IMPORTED_MODULE_2__["GetScoreAndNoOfSwings"])(3, totalHits);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pBtnScore.style.display = "none";
+    pBtnSkip.style.display = "none";
 }
 function CHeckIfCourseIsDone() {
     if (totalDistance >= courseLength) {
