@@ -4,6 +4,8 @@ import axios, {
 } from "../../node_modules/axios/index";
 import {GetEvent} from "./events"
 
+import {GetScoreAndNoOfSwings} from './Score'
+
 // Uri til et slag fra Rest Service
 const Uri : string= "http://localhost:52549/api/swingdata"
 
@@ -36,6 +38,7 @@ export function GetHit ()  {
         let currentDistance: HTMLFontElement = <HTMLFontElement> document.getElementById('current-distance')
         currentDistance.innerHTML = String(totalDistance)
 
+        CHeckIfCourseIsDone()
        
     })
     // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
@@ -44,3 +47,49 @@ export function GetHit ()  {
     })
     
 }
+
+// Afslut bane
+function EndCourse ()  {
+    console.log("tester 123")
+    const ActivateModalBtn: HTMLButtonElement = <HTMLButtonElement> document.getElementById('NextCourseBtn')
+    const ActivatedModal: HTMLDivElement = <HTMLDivElement> document.getElementById('nextCourseModal')
+  
+/* 
+    ActivateModalBtn.addEventListener("click", () => {
+    console.log("tester 123 - indre") 
+    */
+
+    EndScore()
+    
+    if (ActivatedModal.style.display != "block") {
+        ActivatedModal.style.display = "block";
+
+    }
+    else {
+        ActivatedModal.style.display = "none";
+    }
+
+//} )   
+    
+}
+
+function EndScore() {
+    // finder vores html elementer
+    const pName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('nameTotal')
+    const pSwing: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('swingCountTotal')
+    const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
+
+    // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
+    GetScoreAndNoOfSwings(3, totalHits)
+
+    // udskriver vores antal slag
+    pSwing.innerHTML = String(totalHits);
+}
+
+
+function CHeckIfCourseIsDone() { 
+    if(totalDistance >= courseLength){        
+        EndCourse()
+    }
+}
+        

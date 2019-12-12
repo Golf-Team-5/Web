@@ -9,20 +9,22 @@ import { axiosGet } from "./importapi";
 let scoreCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("scoreCount")
 let swingCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("swingCount")
 
-function GetScoreAndNoOfSwings(par: number)
+function GetScoreAndNoOfSwings(par: number, hits: number)
 {
     console.log(par)
     
     axios.get("http://localhost:52549/api/swingdata/GetScore"  ,{
         params: {
-            Par:  par
+            Par:  par,
+            Hits: hits
         }
     } )
     
     .then(function (response: AxiosResponse){
         console.log("Data: "+ response.data)
-        scoreCountElement.innerHTML = "Point: " + response.data[0]
-        swingCountElement.innerHTML = "Antal Sving: " + response.data[1]
+        const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
+
+        pScore.innerHTML = "Point: " + response.data
     })
     .catch(function (error: AxiosError) {
         console.log(Error);
