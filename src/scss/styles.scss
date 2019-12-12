@@ -6,6 +6,7 @@
 /* body */
 body{
     font-family: Arial;
+    background:darkslategray
 }
 #bg {
     clip-path: polygon(0 1%, 95% 0, 78% 100%, 0% 100%);
@@ -53,6 +54,9 @@ body{
 .align-center {
     margin-left: auto;
     margin-right: auto;
+}
+.table-bg{
+    background-color: #24472c;
 }
 
 /* Leaderboard */
@@ -266,9 +270,9 @@ body{
         margin-top:50px;
     }
     #MsgBoxAround{
-        width: 750px; 
+        width: 980px; 
         height: 520px; 
-        margin-left: 500px;
+        margin-left: 200px;
         margin-top: -120px; 
     }
     #MsgBoxImg{
@@ -293,10 +297,10 @@ body{
         margin-top:50px;
     }
     #MsgBoxAround{
-        width: 750px; 
+        width: 800px; 
         height: 520px; 
-        margin-left: 500px;
-        margin-top: -120px; 
+        margin-left: 200px;
+        margin-top: 50px; 
     }
     #MsgBoxImg{
         width:300px; 

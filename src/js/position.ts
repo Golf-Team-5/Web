@@ -27,8 +27,11 @@ export function GetHit ()  {
     axios.get(Uri)
     .then (function (response: AxiosResponse) {
         
-        // GetEvent skal hente en random event fra eventList.
-        GetEvent()
+        if(totalDistance > 0){
+            // GetEvent skal hente en random event fra eventList.
+            GetEvent()
+        }
+
         totalHits +=1;
         console.log(response.data)
         // her vises et enkelt slag, plus den samlet længde
@@ -78,18 +81,22 @@ function EndScore() {
     const pName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('nameTotal')
     const pSwing: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('swingCountTotal')
     const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
+    const pBtnScore: HTMLButtonElement = <HTMLButtonElement> document.getElementById('ScoreBtn')
+    const pBtnSkip: HTMLButtonElement = <HTMLButtonElement> document.getElementById('SkipBtn')
 
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits)
 
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pBtnScore.style.display = "none";
+    pBtnSkip.style.display = "none";
 }
 
 
 function CHeckIfCourseIsDone() { 
     if(totalDistance >= courseLength){        
-        EndCourse()
+        EndCourse()        
     }
 }
         
