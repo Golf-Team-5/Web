@@ -2,6 +2,7 @@ import axios, {
     AxiosResponse,
     AxiosError
 } from "../../node_modules/axios/index";
+import {GetEvent} from "./events"
 
 import {GetScoreAndNoOfSwings} from './Score'
 
@@ -26,6 +27,8 @@ export function GetHit ()  {
     axios.get(Uri)
     .then (function (response: AxiosResponse) {
         
+        // GetEvent skal hente en random event fra eventList.
+        GetEvent()
         totalHits +=1;
         console.log(response.data)
         // her vises et enkelt slag, plus den samlet længde
