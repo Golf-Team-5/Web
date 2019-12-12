@@ -190,6 +190,9 @@ body, html {
     margin-top: 10px;
     width: 70px;
     height: 70px; }
+  .leaderBoard {
+    margin-top: -20px;
+    margin-left: 65px; }
   #carouselExampleSlidesOnly {
     height: 30px; }
   #MsgBoxAround {
@@ -212,7 +215,8 @@ body, html {
     width: 100px;
     height: 100px; }
   .leaderBoard {
-    margin-top: 30px; }
+    margin-top: 50px;
+    margin-left: -30px; }
   #carouselExampleSlidesOnly {
     height: 30px; }
   #MsgBoxAround {
@@ -234,7 +238,7 @@ body, html {
     width: 150px;
     height: 150px; }
   .leaderBoard {
-    margin-top: 20px; }
+    margin-top: 50px; }
   #MsgBoxAround {
     width: 980px;
     height: 520px;
