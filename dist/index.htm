@@ -40,7 +40,7 @@
         </div>       
         <div class="container-fluid row"> <!--row for at holde det horisontalt-->
             <!--Weather picture og data fra api-->
-            <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
+            <div class="col-md-23 col-lg-3 col-sm-12" style="min-height: 90vh">
                 <div>
                     <img id="weather-img" class="img-responsive float" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
                     <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
@@ -52,15 +52,16 @@
             </div>
 
             <!--Play-->
-            <div class="col-md-7 col-lg-7 col-sm-12">
+            <div class="col-md-6 col-lg-6 col-sm-12">
                 <a id="playButton" class="btn-lg btn-danger display-block" href="playerPage.htm" data-toggle="modal" data-target="#startModal">Start spil</a>
             </div>
 
-            <!--Leaderboard-->
+     
             <div class="col-md-3 col-lg-3  leaderBoard-Pos">
                 <!-- Leaderboard -->
-                <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard">
-                    <thead class="thead-dark">
+                <h2 class="top5-headline">Top 5</h2>
+                <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard leaderBoard-text">
+          <!--          <thead class="thead-dark">
                         <tr>
                             <th colspan="3">Top 3 score</th>
                         </tr>
@@ -69,8 +70,8 @@
                             <th>Navn</th>
                             <th>Score</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    </thead> -->
+                 <!--    <tbody>
                         <tr>
                             <td>1</td>
                             <td>STR</td>
@@ -86,8 +87,9 @@
                             <td>BOO</td>
                             <td>TRUE</td>
                         </tr>
-                    </tbody>                        
-                </table>            
+                    </tbody>    -->                     
+                </table>   
+                  
             </div>
         </div>        
         <div class="container-fluid" style="position: fixed; bottom: 0;">
@@ -210,34 +212,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table id="LeaderTableModal" class="table table-hover table-light table-striped leaderBoard">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th colspan="3">Top 3 score</th>
-                            </tr>
-                            <tr>
-                                <th>#</th>
-                                <th>Navn</th>
-                                <th>Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>STR</td>
-                                <td>"3333"</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>INT</td>
-                                <td>222</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>BOO</td>
-                                <td>TRUE</td>
-                            </tr>
-                        </tbody>                        
+                    <!-- Modal med leaderboard -->
+                    <table id="LeaderTableModal2" class="table table-hover table-light table-striped leaderBoard">
+                                            
                     </table>  
                 </div>
                 <div class="modal-footer">

@@ -2057,99 +2057,67 @@ module.exports = __webpack_require__.p + "index.htm";
 
 /***/ }),
 
-/***/ "./src/js/Score.ts":
-/*!*************************!*\
-  !*** ./src/js/Score.ts ***!
-  \*************************/
-/*! exports provided: GetScoreAndNoOfSwings */
+/***/ "./src/js/importapi.ts":
+/*!*****************************!*\
+  !*** ./src/js/importapi.ts ***!
+  \*****************************/
+/*! exports provided: axiosGet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetScoreAndNoOfSwings", function() { return GetScoreAndNoOfSwings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
-var scoreCountElement = document.getElementById("scoreCount");
-var swingCountElement = document.getElementById("swingCount");
-function GetScoreAndNoOfSwings(par, hits) {
-    console.log(par);
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
+function axiosGet() {
+    // Test api | returnerer en liste af Player med name og score
+    var playerScoresUri = "http://localhost:33935/api/players";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
         params: {
-            Par: par,
-            Hits: hits
+            _limit: 5
         }
     })
         .then(function (response) {
-        console.log("Data: " + response.data);
-        var pScore = document.getElementById('scoreCountTotal');
-        pScore.innerHTML = response.data;
+        // Content Area
+        var leaderboardTable = document.getElementById('LeaderTableModal');
+        var leaderboardTable2 = document.getElementById('LeaderTableModal2');
+        console.log(response.data);
+        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
+        // response er JSON der kommer tilbage fra URI
+        // mainLeftTable er det element vi tilføjer hvert under-element til
+        //addScoreToDOM(response, mainLeft)
+        addScoreToTable(response, leaderboardTable);
+        addScoreToTable(response, leaderboardTable2);
     })
-        .catch(function (error) {
-        console.log(Error);
+        .catch(function (err) {
+        console.log(err);
+    });
+}
+function addScoreToDOM(res, ele) {
+    var i = 1;
+    res.data.forEach(function (score) {
+        var titleParagraph = document.createElement("p");
+        titleParagraph.innerHTML = i + score.name + " | " + score.score;
+        ele.appendChild(titleParagraph);
+        i += 1;
+    });
+}
+function addScoreToTable(res, ele) {
+    // ele.innerHTML = '<thead class="thead-dark"><tr><th colspan="3">Top 3 score</th></tr><tr><th>#</th><th>Navn</th><th>Score</th></tr></thead>'
+    var i = 5;
+    res.data.forEach(function (score) {
+        var row = ele.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = String(i);
+        cell2.innerHTML = score.name;
+        cell3.innerHTML = String(score.score);
+        i -= 1;
     });
 }
 
-
-
-/***/ }),
-
-/***/ "./src/js/events.ts":
-/*!**************************!*\
-  !*** ./src/js/events.ts ***!
-  \**************************/
-/*! exports provided: GetEvent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetEvent", function() { return GetEvent; });
-var eventList = [
-    "Du står fuld fokuseret og begynder at tag bevægelserne i at gøre klar til at svinge din golfkølle. Du holder øje med kun golfkuglen nu og skal lige til at svinge golfkøllen, MEN du finder i øjenkrogen et lille egern!<br>...<br>  I det mister du alt form for koncentration samt du svinger golfkøllen.",
-    "Fast besluttet på at dette bliver dit heldige slag, så kigger du kort på golfkuglen og derefter flaget til golfhullet, du bemærkede at der skulle virkelig kraft på dit næste slag. Du begynder at lave bevægelserne til at tag svinget og slår golfkuglen med alt din kraft!<br>…<br> Du ser spændt ud over golfbanen i håb om den blev skudt langt nok, men du kan ikke se den. Du tager et kort blik ned, hvor golfkuglen er skudt ned i jorden.",
-    "I håb om at du kan lave noget fremskridt på banen, så har du et stærk fokus på golfkuglen og den rute som kuglen skal følge for at komme i mål. I det du lavede bevægelserne for at slå golfkuglen, så ser du noget som kommer flyvende hen imod dig. Du kan kun lige ane 2 store vinger.<br>…<br> DET VAR EN ØRN. Du mister grebet på golfkøllen og springer ned på jorden. Ørn lavede et dyk og snuppede golfkuglen og fløj væk med golfkuglen. Ørnen tabte kuglen tættere på hullet.",
-    "Fuld fokuseret havde du øje på golfkuglen. Du havde på fornemmelsen dette bliver dit heldige sving. Du kastede et kort blik på flaget til golfhullet. Du begyndte at lave bevægelserne til svinge golfkøllen, i det millisekund du skulle til at ramme golfkuglen bliver du blindet af solens skær.<br>… <br> Du rammer luften.",
-    "Fuld af selvtillid kigger du over golfbanen. Dette er intet i forhold til dine evner. Du gør bevægelserne til det næste sving. I det du skal til at svinge hører du en skrækkelig lyd som ødelægger alt form for koncentration, det var en MÅGE!<br>…<br> Du svinger ikke efter golfkuglen mere, men den forbandede måge!",
-    "Du kan mærke en kraftig vind, men intet er fortabt endnu siden det er medvind! Du tager chancen i håb om kuglen ville blive skudt længere end forventet. Du laver bevægelserne til at svinge golfkøllen og du rammer lige på!<br>…<br> Golfkuglen fløj +400 meter.",
-    "Du kan mærke gud er med dig. Du føler dig kraftfuld og har potentiale til at gå udover dine egne forventninger. I det du begynder at lave bevægelserne for at svinge, ser du en solstråle ned fra skyede himmel som lander på dig. Du svinger med alle dine kræfter! <br>…<br> Golfkuglen flyver som aldrig før. Det blev en Hole-In-One.",
-    "Du føler dig kraftfuld, du er selvsikker på at dit næste slag vil blive en Hole-In-One. Du begynder at lave bevægelserne til at lave slaget. I det du svinger kan du mærke en form for energi som du aldrig har følt før. Da du rammer golfkuglen kan du se gnister i golfkøllen. Der er lyden af et kæmpe brag og golfkuglen flyver med utrolig kraft! <br> …<br> Golfkuglen flyver ud i horisonten…",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
-    "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang."
-];
-var imageUrilist = [
-    "./img/msg-hit-a-pidgen.png",
-    "./img/msg-earth.jpg",
-    "./img/msg-Eagle-steales-the-ball.jpg",
-    "./img/msg-stickman-misses.jpg",
-    "./img/msg-seagull-with-golfball.jpg",
-    "./img/msg-vind-takes-the-ball.jpg",
-    "./img/msg-golf-hole-in-one.jpg",
-    "./img/msg-moon.jpg",
-    "./img/golf-course-bg.jpg"
-];
-function GetEvent() {
-    var eventOutput = document.getElementById("event");
-    var eventImage = document.getElementById('MsgBoxImg');
-    var index = getRandomInt(0, eventList.length);
-    eventOutput.innerHTML = eventList[index];
-    if (index >= 0 && index < 9) {
-        eventImage.src = imageUrilist[index];
-    }
-    else {
-        eventImage.src = imageUrilist[8];
-    }
-}
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
 
 
 /***/ }),
@@ -2163,109 +2131,16 @@ function getRandomInt(min, max) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 
 
-Object(_position__WEBPACK_IMPORTED_MODULE_0__["GetHit"])();
+//GetHit()
 //axiosGet();
 //AxiosGetSwingData();
 Object(_weatherapi__WEBPACK_IMPORTED_MODULE_1__["GetWeather"])();
-//axiosGet();
+Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
-
-
-/***/ }),
-
-/***/ "./src/js/position.ts":
-/*!****************************!*\
-  !*** ./src/js/position.ts ***!
-  \****************************/
-/*! exports provided: GetHit */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetHit", function() { return GetHit; });
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
-/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
-
-
-
-// Uri til et slag fra Rest Service
-var Uri = "http://localhost:52549/api/swingdata";
-// banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
-var courseLength = 1000;
-// reference til Næste slag knappen, samt dens "listener"
-var getDataBtn = document.getElementById('ScoreBtn');
-getDataBtn.addEventListener("click", GetHit);
-// her skrives banelængden ud
-var course = document.getElementById('course-lenght');
-course.innerHTML = String(courseLength);
-var totalHits = 0;
-var totalDistance = 0;
-// funktionen henter et slag fra Rest Service ved hjælp af Axios
-function GetHit() {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
-        .then(function (response) {
-        if (totalDistance > 0) {
-            // GetEvent skal hente en random event fra eventList.
-            Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
-        }
-        totalHits += 1;
-        console.log(response.data);
-        // her vises et enkelt slag, plus den samlet længde
-        totalDistance += Number(response.data);
-        var currentSwing = document.getElementById('current-hit');
-        currentSwing.innerHTML = String(response.data);
-        var currentDistance = document.getElementById('current-distance');
-        currentDistance.innerHTML = String(totalDistance);
-        CHeckIfCourseIsDone();
-    })
-        // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
-        .catch(function (error) {
-        console.log(error);
-    });
-}
-// Afslut bane
-function EndCourse() {
-    console.log("tester 123");
-    var ActivateModalBtn = document.getElementById('NextCourseBtn');
-    var ActivatedModal = document.getElementById('nextCourseModal');
-    /*
-        ActivateModalBtn.addEventListener("click", () => {
-        console.log("tester 123 - indre")
-        */
-    EndScore();
-    if (ActivatedModal.style.display != "block") {
-        ActivatedModal.style.display = "block";
-    }
-    else {
-        ActivatedModal.style.display = "none";
-    }
-    //} )   
-}
-function EndScore() {
-    // finder vores html elementer
-    var pName = document.getElementById('nameTotal');
-    var pSwing = document.getElementById('swingCountTotal');
-    var pScore = document.getElementById('scoreCountTotal');
-    var pBtnScore = document.getElementById('ScoreBtn');
-    var pBtnSkip = document.getElementById('SkipBtn');
-    // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
-    Object(_Score__WEBPACK_IMPORTED_MODULE_2__["GetScoreAndNoOfSwings"])(3, totalHits);
-    // udskriver vores antal slag
-    pSwing.innerHTML = String(totalHits);
-    pBtnScore.style.display = "none";
-    pBtnSkip.style.display = "none";
-}
-function CHeckIfCourseIsDone() {
-    if (totalDistance >= courseLength) {
-        EndCourse();
-    }
-}
 
 
 /***/ }),

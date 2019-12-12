@@ -93,7 +93,7 @@ function EndScore() {
     pBtnSkip.style.display = "none";
 }
 
-
+// Hvis total længde af alle slag er over banens længde: Du vandt!
 function CHeckIfCourseIsDone() { 
     if(totalDistance >= courseLength){        
         EndCourse()        
