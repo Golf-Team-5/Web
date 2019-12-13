@@ -2171,11 +2171,7 @@ __webpack_require__.r(__webpack_exports__);
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {
-        params: {
-            _limit: 5
-        }
-    })
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
         // Content Area
         var leaderboardTable = document.getElementById('LeaderTableModal');
@@ -2194,17 +2190,17 @@ function axiosGet() {
 }
 function addScoreToTable(res, ele) {
     //ele.innerHTML = '<thead class="thead-dark"><tr><th colspan="3">Top 3 score</th></tr><tr><th>#</th><th>Navn</th><th>Score</th></tr></thead>'
-    var i = 5;
+    var i = 1;
     res.data.forEach(function (score) {
-        if (i >= 1) {
-            var row = ele.insertRow(0);
+        if (i <= 5) {
+            var row = ele.insertRow(-1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             cell1.innerHTML = String(i);
             cell2.innerHTML = score.playerName;
             cell3.innerHTML = String(score.playerScore);
-            i -= 1;
+            i += 1;
         }
     });
 }
