@@ -75,6 +75,9 @@ body, html {
   color: #3c3c3c;
   font-weight: bold; }
 
+.display-none {
+  display: none; }
+
 /* Start side */
 #playButton {
   width: 250px;

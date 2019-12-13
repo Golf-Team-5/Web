@@ -33,7 +33,7 @@ let imageUrilist:string[]=
     "./img/golf-course-bg.jpg"
 ]
 export function GetEvent(){
-    
+    console.log("geteevent")
     let eventOutput: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("event")
     let eventImage: HTMLImageElement = <HTMLImageElement> document.getElementById('MsgBoxImg')
     let index:number = getRandomInt(0,eventList.length)

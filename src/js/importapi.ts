@@ -5,14 +5,14 @@ import axios, {
 
 interface IScore {
     rank: number;
-    name: string;
-    shots: number;
-    score: number;
+    playerName: string;
+    playerSwings: number;
+    playerScore: number;
 }
 
 function axiosGet(){
      // Test api | returnerer en liste af Player med name og score
-    let playerScoresUri: string = "http://localhost:33935/api/players"
+    let playerScoresUri: string = "http://localhost:52549/api/swingdata/getleaderboard"
 
     axios.get<IScore[]>(playerScoresUri, {
          params: {
@@ -38,36 +38,28 @@ function axiosGet(){
     })
 }
 
-function addScoreToDOM(res: AxiosResponse<IScore[]>, ele: HTMLDivElement){
-
-    let i: number = 1;
-
-    res.data.forEach((score: IScore) => {
-        let titleParagraph: HTMLParagraphElement = <HTMLParagraphElement> document.createElement<'p'>("p")
-        titleParagraph.innerHTML = i + score.name + " | " + score.score
-        ele.appendChild(titleParagraph)
-        i += 1
-    })
-}
-
-
 function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
 
-   // ele.innerHTML = '<thead class="thead-dark"><tr><th colspan="3">Top 3 score</th></tr><tr><th>#</th><th>Navn</th><th>Score</th></tr></thead>'
+   //ele.innerHTML = '<thead class="thead-dark"><tr><th colspan="3">Top 3 score</th></tr><tr><th>#</th><th>Navn</th><th>Score</th></tr></thead>'
     
    let i: number = 5
 
     res.data.forEach((score: IScore) => {
 
-        let row = ele.insertRow(0)
-        let cell1 = row.insertCell(0)
-        let cell2 = row.insertCell(1)
-        let cell3 = row.insertCell(2)
-    
-        cell1.innerHTML = String(i)
-        cell2.innerHTML = score.name
-        cell3.innerHTML = String(score.score)
-        i -= 1
+        if (i >= 1) {
+            let row = ele.insertRow(0)
+            let cell1 = row.insertCell(0)
+            let cell2 = row.insertCell(1)
+            let cell3 = row.insertCell(2)
+        
+            cell1.innerHTML = String(i)
+            cell2.innerHTML = score.playerName
+            cell3.innerHTML = String(score.playerScore)
+            i -= 1
+        }
+        
+  
+
     });  
 
 
