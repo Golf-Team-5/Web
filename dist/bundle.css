@@ -6,7 +6,8 @@
 
 /* body */
 body {
-  font-family: Arial; }
+  font-family: Arial;
+  background: darkslategray; }
 
 #bg {
   clip-path: polygon(0 1%, 95% 0, 78% 100%, 0% 100%);
@@ -53,7 +54,15 @@ body, html {
   margin-left: auto;
   margin-right: auto; }
 
+.table-bg {
+  background-color: #24472c; }
+
 /* Leaderboard */
+.top5-headline {
+  font-weight: 600;
+  color: #3c3c3c;
+  margin-top: 30px; }
+
 .leaderBoard-Pos {
   right: 50px;
   width: 80%; }
@@ -61,6 +70,13 @@ body, html {
 .leaderBoard {
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(60, 60, 60, 0.4); }
+
+.leaderBoard-text {
+  color: #3c3c3c;
+  font-weight: bold; }
+
+.display-none {
+  display: none; }
 
 /* Start side */
 #playButton {
@@ -227,9 +243,9 @@ body, html {
   .leaderBoard {
     margin-top: 50px; }
   #MsgBoxAround {
-    width: 750px;
+    width: 980px;
     height: 520px;
-    margin-left: 500px;
+    margin-left: 200px;
     margin-top: -120px; }
   #MsgBoxImg {
     width: 300px;
@@ -246,12 +262,12 @@ body, html {
     width: 150px;
     height: 150px; }
   .leaderBoard {
-    margin-top: 50px; }
+    margin-top: 20px; }
   #MsgBoxAround {
-    width: 750px;
+    width: 800px;
     height: 520px;
-    margin-left: 500px;
-    margin-top: -120px; }
+    margin-left: 200px;
+    margin-top: 50px; }
   #MsgBoxImg {
     width: 300px;
     height: 300px;

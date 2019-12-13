@@ -47,7 +47,7 @@ function AddWeatherToPage(res: AxiosResponse<IWeather>) {
     let cityWeather: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('city-weather')
 
     cityName.innerHTML = res.data.name
-    cityTemperature.innerHTML = String(res.data.main.temp)
+    cityTemperature.innerHTML = String(Math.floor(res.data.main.temp))
     cityWeather.innerHTML = Weather(res.data.weather[0].description)
 }
 

@@ -2097,6 +2097,7 @@ var imageUrilist = [
     "./img/golf-course-bg.jpg"
 ];
 function GetEvent() {
+    console.log("geteevent");
     var eventOutput = document.getElementById("event");
     var eventImage = document.getElementById('MsgBoxImg');
     var index = getRandomInt(0, eventList.length);
@@ -2117,6 +2118,60 @@ function getRandomInt(min, max) {
 
 /***/ }),
 
+/***/ "./src/js/importapi.ts":
+/*!*****************************!*\
+  !*** ./src/js/importapi.ts ***!
+  \*****************************/
+/*! exports provided: axiosGet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axiosGet", function() { return axiosGet; });
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
+
+function axiosGet() {
+    // Test api | returnerer en liste af Player med name og score
+    var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
+        .then(function (response) {
+        // Content Area
+        var leaderboardTable = document.getElementById('LeaderTableModal');
+        var leaderboardTable2 = document.getElementById('LeaderTableModal2');
+        console.log(response.data);
+        // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
+        // response er JSON der kommer tilbage fra URI
+        // mainLeftTable er det element vi tilføjer hvert under-element til
+        //addScoreToDOM(response, mainLeft)
+        addScoreToTable(response, leaderboardTable);
+        addScoreToTable(response, leaderboardTable2);
+    })
+        .catch(function (err) {
+        console.log(err);
+    });
+}
+function addScoreToTable(res, ele) {
+    //ele.innerHTML = '<thead class="thead-dark"><tr><th colspan="3">Top 3 score</th></tr><tr><th>#</th><th>Navn</th><th>Score</th></tr></thead>'
+    var i = 1;
+    res.data.forEach(function (score) {
+        if (i <= 5) {
+            var row = ele.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = String(i);
+            cell2.innerHTML = score.playerName;
+            cell3.innerHTML = String(score.playerScore);
+            i += 1;
+        }
+    });
+}
+
+
+
+/***/ }),
+
 /***/ "./src/js/index.ts":
 /*!*************************!*\
   !*** ./src/js/index.ts ***!
@@ -2126,16 +2181,23 @@ function getRandomInt(min, max) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
 /* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 //import {AxiosGetSwingData} from './position'
 
+/* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 
-Object(_position__WEBPACK_IMPORTED_MODULE_0__["GetHit"])();
+
+
+
+Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
 //axiosGet();
 //AxiosGetSwingData();
-Object(_weatherapi__WEBPACK_IMPORTED_MODULE_1__["GetWeather"])();
-//axiosGet();
+Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
+Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
 
 
@@ -2187,8 +2249,10 @@ var totalDistance = 0;
 function GetHit() {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
         .then(function (response) {
-        // GetEvent skal hente en random event fra eventList.
-        Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
+        if (totalDistance > 0) {
+            // GetEvent skal hente en random event fra eventList.
+            Object(_events__WEBPACK_IMPORTED_MODULE_1__["GetEvent"])();
+        }
         totalHits += 1;
         console.log(response.data);
         // her vises et enkelt slag, plus den samlet længde
@@ -2263,6 +2327,8 @@ function EndScore() {
     var pName = document.getElementById('nameTotal');
     var pSwing = document.getElementById('swingCountTotal');
     var pScore = document.getElementById('scoreCountTotal');
+    var pBtnScore = document.getElementById('ScoreBtn');
+    var pBtnSkip = document.getElementById('SkipBtn');
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits);
     //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
@@ -2277,7 +2343,10 @@ function EndScore() {
     //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pBtnScore.style.display = "none";
+    pBtnSkip.style.display = "none";
 }
+// Hvis total længde af alle slag er over banens længde: Du vandt!
 function CHeckIfCourseIsDone() {
     if (totalDistance >= courseLength) {
         EndCourse();
@@ -2328,7 +2397,7 @@ function AddWeatherToPage(res) {
     var cityTemperature = document.getElementById('city-temperature');
     var cityWeather = document.getElementById('city-weather');
     cityName.innerHTML = res.data.name;
-    cityTemperature.innerHTML = String(res.data.main.temp);
+    cityTemperature.innerHTML = String(Math.floor(res.data.main.temp));
     cityWeather.innerHTML = Weather(res.data.weather[0].description);
 }
 // Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.

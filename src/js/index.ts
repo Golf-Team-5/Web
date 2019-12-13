@@ -13,7 +13,7 @@ GetWeather()
 
 
 
-//axiosGet();
+axiosGet();
 //AxiosGetSwingData();
 
 

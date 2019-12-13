@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     </head>
-    <body>
+    <body style="background:darkslategray">
         <div id="bg" class="img-responsive"></div>
         <div class="Container">
             <nav class="navbar navbar-expand-lg navbar-light bg-dark col-sm-12">
@@ -41,12 +41,23 @@
             <div class="row">
                <!--Weather picture-->
                 <div class="col-md-12 col-lg-1 col-sm-12">
-                    <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                    <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
+                        <div>
+                            
+                            <img id="weather-img" class="img-responsive float" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                            
+                            <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                                <b><span id="city-name"></span><br>
+                                Temperatur: <span id="city-temperature"></span>&#176; C<br>
+                                <span id="city-weather"></span>
+                            </b></p>    
+                        </div>
+                    </div>
                 </div>
                 <div id="MsgBoxAround" class="col-md-12 col-lg-8 col-sm-12 float">
                     <div class="row">                    
                         <!-- Message Box  -->
-                        <div class="col-md-4 col-lg-4 col-sm-12">
+                        <div class="col-md-5 col-lg-5 col-sm-12">
                             <img id="MsgBoxImg" src="img/msg-GameStart.jpg" alt="message picture"/>
                             <!-- Score og Swing tællere opdateres ved tryk på næste tur knappen -->
                             <p id="scoreCount"><b>Score:  <br/><span id="swingCount">500</span></b></p>
@@ -58,7 +69,7 @@
                             </p>
                             
                         </div>
-                        <div class="col-md-8 col-lg-8 col-sm-8 col-sm-12">
+                        <div class="col-md-7 col-lg-7 col-sm-12">
                             <div id="MsgOutput">
                                 <p id="WelcomePlayer"></p>
                                 <p id="event">
@@ -312,7 +323,8 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-danger" id="SkipDoneBtn" data-toggle="modal" data-target="#skipModal"><span class="fa fa-angle-double-right"></span> Afslut spil</button>
-                        </div>
+                        </div>  
+
                     </div>
                 </div>
             </div> 
