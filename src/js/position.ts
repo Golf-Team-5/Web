@@ -24,6 +24,7 @@ let totalDistance:number = 0;
 
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 export function GetHit ()  {
+    
     axios.get(Uri)
     .then (function (response: AxiosResponse) {
         
