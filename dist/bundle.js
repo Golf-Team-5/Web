@@ -2057,43 +2057,6 @@ module.exports = __webpack_require__.p + "index.htm";
 
 /***/ }),
 
-/***/ "./src/js/Score.ts":
-/*!*************************!*\
-  !*** ./src/js/Score.ts ***!
-  \*************************/
-/*! exports provided: GetScoreAndNoOfSwings */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetScoreAndNoOfSwings", function() { return GetScoreAndNoOfSwings; });
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-
-var scoreCountElement = document.getElementById("scoreCount");
-var swingCountElement = document.getElementById("swingCount");
-function GetScoreAndNoOfSwings(par, hits) {
-    console.log(par);
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
-        params: {
-            Par: par,
-            Hits: hits
-        }
-    })
-        .then(function (response) {
-        console.log("Data: " + response.data);
-        var pScore = document.getElementById('scoreCountTotal');
-        pScore.innerHTML = response.data;
-    })
-        .catch(function (error) {
-        console.log(Error);
-    });
-}
-
-
-
-/***/ }),
-
 /***/ "./src/js/events.ts":
 /*!**************************!*\
   !*** ./src/js/events.ts ***!
@@ -2218,9 +2181,15 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
+/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
+/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
+//import {AxiosGetSwingData} from './position'
+
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
 /* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
+
 
 
 
@@ -2247,10 +2216,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
-/* harmony import */ var _Score__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Score */ "./src/js/Score.ts");
 
 
+/* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
 
+const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");
+const btnSubmitName: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton");
+const ShowName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("WelcomePlayer");
+
+btnSubmitName.addEventListener("click", SetName) */
+/* function SetName(){
+    /* if(btnSubmitName == null){
+        console.log("input = null");
+    }
+    else{
+        console.log("input har value");
+    } */
+//    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
@@ -2286,6 +2268,19 @@ function GetHit() {
         console.log(error);
     });
 }
+function PostPlayer(player) {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.post(Uri + "/PostPlayerScore", {
+        //Playername: player.Playername,
+        PlayerSwings: player.PlayerSwings,
+        PlayerScore: player.PlayerScore,
+    })
+        .then(function (response) {
+        console.log(response.data);
+    })
+        .catch(function (Error) {
+        console.log(Error);
+    });
+}
 // Afslut bane
 function EndCourse() {
     console.log("tester 123");
@@ -2304,6 +2299,29 @@ function EndCourse() {
     }
     //} )   
 }
+var score;
+var scoreCountElement = document.getElementById("scoreCount");
+var swingCountElement = document.getElementById("swingCount");
+var finalScore;
+function GetScoreAndNoOfSwings(par, hits) {
+    console.log(par);
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
+        params: {
+            Par: par,
+            Hits: hits
+        }
+    })
+        .then(function (response) {
+        console.log("Data: " + response.data);
+        var pScore = document.getElementById('scoreCountTotal');
+        score = response.data;
+        finalScore = score;
+        pScore.innerHTML = response.data;
+    })
+        .catch(function (error) {
+        console.log(Error);
+    });
+}
 function EndScore() {
     // finder vores html elementer
     var pName = document.getElementById('nameTotal');
@@ -2312,7 +2330,17 @@ function EndScore() {
     var pBtnScore = document.getElementById('ScoreBtn');
     var pBtnSkip = document.getElementById('SkipBtn');
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
-    Object(_Score__WEBPACK_IMPORTED_MODULE_2__["GetScoreAndNoOfSwings"])(3, totalHits);
+    GetScoreAndNoOfSwings(3, totalHits);
+    //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
+    console.log("Name is: " + finalScore);
+    //console.log("Navn Er: " + playerName.value)
+    var PlayerForDatabase = {
+        Playername: String("PER"),
+        PlayerSwings: Number(totalHits),
+        PlayerScore: Number(finalScore),
+    };
+    console.log("PlayerDatabase :" + finalScore);
+    //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
     pBtnScore.style.display = "none";

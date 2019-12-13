@@ -9,6 +9,7 @@
         <!-- favicon-->
         <link rel="icon" href="img/logo-3-tpbg.png" type="image/x-icon"/>
         <!-- CSS -->
+        
         <link rel="stylesheet" href="bundle.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
@@ -126,11 +127,11 @@
                             <p>*Dit navn kan maks være på 3 bogstaver
                                 <br/>
                                 *Dit navn må ikke indeholde specieltegn</p>
-                            <input placeholder=" skriv dit navn her..." name="inputName" onclick="" id="usernameInput" type="text" minlength="3" maxlength="3" required />
+                            <input placeholder=" skriv dit navn her..." name="inputName" id="usernameInput" type="text" minlength="3" maxlength="3" required />
                             <p class="alert alert-danger" id="nameErrorMsg"></p> 
                         </div>
                         <div class="modal-footer">
-                            <input class="btn-lg btn-success display-block" type="submit" onclick="allLetter(document.FormStartGame.inputName)" value="Start spil" >
+                            <input class="btn-lg btn-success display-block" id="ConfirmNameButton" type="submit" onclick="allLetter(document.FormStartGame.inputName)" value="Start spil" >
                         </div>
                     </form>
                 </div>
@@ -235,13 +236,17 @@
         <script src="bundle.js"></script>
         
         <script>
+            //import {SetName} from "./position"
             function allLetter(inputtxt)
             { 
                 var letters = /^[A-Za-z]+$/;
                 if(inputtxt.value.match(letters))
                 {
+                    var urlParams = new URLSearchParams(window.location.inputName);
+                    console.log(urlParams)
                     return true;
-                }
+                } 
+                
                 else
                 {
                     event.preventDefault();

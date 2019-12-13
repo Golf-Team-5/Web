@@ -10,9 +10,29 @@ interface IScore {
     playerScore: number;
 }
 
+/* export class NameSetter{
+    static playerConfirmedName: string
+} */
+
+/* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
+ConfirmNameButton.addEventListener("click", SetName)
+
+function SetName()
+{
+    console.log("BLIVER METODEN TRICKET-JA")
+    let playerName: HTMLInputElement = <HTMLInputElement> document.getElementById('inputName')
+    let playerBox: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+    playerBox.innerHTML = playerName.value
+    console.log(playerBox)
+    //NameSetter.playerConfirmedName = playerName.value
+}
+ */
 function axiosGet(){
+
+
      // Test api | returnerer en liste af Player med name og score
     let playerScoresUri: string = "http://localhost:52549/api/swingdata/getleaderboard"
+
 
     axios.get<IScore[]>(playerScoresUri, {
 
@@ -66,9 +86,9 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
 
     });  
 
-
+    
 
 }
 
-export {axiosGet}
+export {axiosGet} //, SetName
 
