@@ -134,11 +134,11 @@
                             <p>*Dit navn kan maks være på 3 bogstaver
                                 <br/>
                                 *Dit navn må ikke indeholde specieltegn</p>
-                            <input placeholder=" skriv dit navn her..." name="inputName" onclick="" id="usernameInput" type="text" minlength="3" maxlength="3" required />
+                            <input placeholder=" skriv dit navn her..." name="inputName" id="usernameInput" type="text" minlength="3" maxlength="3" required />
                             <p class="alert alert-danger" id="nameErrorMsg"></p> 
                         </div>
                         <div class="modal-footer">
-                            <input class="btn-lg btn-success display-block" type="submit" onclick="allLetter(document.FormStartGame.inputName)" value="Start spil" >
+                            <input class="btn-lg btn-success display-block" id="ConfirmNameButton" type="submit" onclick="allLetter(document.FormStartGame.inputName)" value="Start spil" >
                         </div>
                     </form>
                 </div>

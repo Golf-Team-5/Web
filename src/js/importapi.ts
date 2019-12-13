@@ -10,10 +10,28 @@ interface IScore {
     score: number;
 }
 
+/* export class NameSetter{
+    static playerConfirmedName: string
+} */
+
+/* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
+ConfirmNameButton.addEventListener("click", SetName)
+
+function SetName()
+{
+    console.log("BLIVER METODEN TRICKET-JA")
+    let playerName: HTMLInputElement = <HTMLInputElement> document.getElementById('inputName')
+    let playerBox: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+    playerBox.innerHTML = playerName.value
+    console.log(playerBox)
+    //NameSetter.playerConfirmedName = playerName.value
+}
+ */
 function axiosGet(){
     let jsonplaceholderString : string = "http://jsonplaceholder.typicode.com/todos";
     // Test URI - test data
     let playerScoresUri: string = "http://localhost:64005/api/players"
+    
 
     axios.get<IScore[]>(playerScoresUri, {
    /*      params: {
@@ -63,9 +81,9 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
         
     });  
 
-
+    
 
 }
 
-export {axiosGet}
+export {axiosGet} //, SetName
 

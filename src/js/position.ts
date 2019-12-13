@@ -3,8 +3,36 @@ import axios, {
     AxiosError
 } from "../../node_modules/axios/index";
 import {GetEvent} from "./events"
+//import { NameSetter,  SetName} from "./importapi";
 
-import {GetScoreAndNoOfSwings} from './Score'
+
+
+interface Player {
+
+    Playername: string;
+    PlayerSwings: number;
+    PlayerScore: number;
+
+}
+
+/* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
+
+const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");
+const btnSubmitName: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton");
+const ShowName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("WelcomePlayer");
+
+btnSubmitName.addEventListener("click", SetName) */
+ 
+/* function SetName(){
+    /* if(btnSubmitName == null){
+        console.log("input = null");
+    }
+    else{
+        console.log("input har value");
+    } */
+//    console.log("Hej! jeg virker!")} 
+ 
+
 
 // Uri til et slag fra Rest Service
 const Uri : string= "http://localhost:52549/api/swingdata"
@@ -22,6 +50,9 @@ course.innerHTML = String(courseLength)
 let totalHits: number = 0;
 let totalDistance:number = 0;
 
+
+
+
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 export function GetHit ()  {
     axios.get(Uri)
@@ -37,7 +68,7 @@ export function GetHit ()  {
         currentSwing.innerHTML = String(response.data)       
         let currentDistance: HTMLFontElement = <HTMLFontElement> document.getElementById('current-distance')
         currentDistance.innerHTML = String(totalDistance)
-
+        
         CHeckIfCourseIsDone()
        
     })
@@ -48,12 +79,38 @@ export function GetHit ()  {
     
 }
 
+
+
+function PostPlayer(player: Player)
+{
+    
+axios.post(Uri+"/PostPlayerScore", {
+    
+        
+            //Playername: player.Playername,
+            PlayerSwings: player.PlayerSwings,
+            PlayerScore: player.PlayerScore,
+        
+    
+})
+.then(function (response: AxiosResponse){
+    console.log(response.data)
+})
+.catch(function(Error:AxiosError){
+    console.log(Error);
+    
+})
+}
+
 // Afslut bane
 function EndCourse ()  {
     console.log("tester 123")
     const ActivateModalBtn: HTMLButtonElement = <HTMLButtonElement> document.getElementById('NextCourseBtn')
     const ActivatedModal: HTMLDivElement = <HTMLDivElement> document.getElementById('nextCourseModal')
   
+    
+    
+    
 /* 
     ActivateModalBtn.addEventListener("click", () => {
     console.log("tester 123 - indre") 
@@ -73,14 +130,67 @@ function EndCourse ()  {
     
 }
 
+let score: number
+let scoreCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("scoreCount")
+let swingCountElement: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("swingCount")
+
+
+let finalScore: number;
+
+function GetScoreAndNoOfSwings(par: number, hits: number)
+{
+    console.log(par)
+    
+    axios.get("http://localhost:52549/api/swingdata/GetScore"  ,{
+        params: {
+            Par:  par,
+            Hits: hits
+        }
+    } )
+    
+    .then(function (response: AxiosResponse){
+        console.log("Data: "+ response.data)
+        const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
+
+        score = response.data
+        
+        
+        
+        finalScore = score;
+        pScore.innerHTML = response.data
+    })
+    .catch(function (error: AxiosError) {
+        console.log(Error);
+        
+    })
+
+}
+
+
 function EndScore() {
     // finder vores html elementer
     const pName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('nameTotal')
     const pSwing: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('swingCountTotal')
     const pScore: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('scoreCountTotal')
+    
 
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits)
+
+    //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
+    console.log("Name is: " + finalScore)
+    
+    //console.log("Navn Er: " + playerName.value)
+    
+    let PlayerForDatabase: Player = {
+        Playername: String("PER"),
+        PlayerSwings: Number(totalHits),
+        PlayerScore: Number(finalScore),
+        
+    }; 
+    console.log("PlayerDatabase :" + finalScore)
+
+    //PostPlayer(PlayerForDatabase);
 
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
@@ -92,4 +202,5 @@ function CHeckIfCourseIsDone() {
         EndCourse()
     }
 }
-        
+
+
