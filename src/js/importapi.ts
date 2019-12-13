@@ -21,15 +21,19 @@ function axiosGet(){
         // Content Area
         let leaderboardTable: HTMLTableElement = <HTMLTableElement> document.getElementById('LeaderTableModal')
         let leaderboardTable2: HTMLTableElement = <HTMLTableElement> document.getElementById('LeaderTableModal2')
+        let leaderboardTable3: HTMLTableElement = <HTMLTableElement> document.getElementById('EndgameLeaderboard')
+        
         console.log(response.data)
   
 
         // Kalder her en metode som formatere inholdet fra JSON objekterne og stiller dem pænt op
         // response er JSON der kommer tilbage fra URI
         // mainLeftTable er det element vi tilføjer hvert under-element til
-        //addScoreToDOM(response, mainLeft)
+        // addScoreToDOM(response, mainLeft)
         addScoreToTable(response, leaderboardTable)
         addScoreToTable(response, leaderboardTable2)
+        addScoreToTable(response, leaderboardTable3)
+        
         
     })
     .catch(function(err: AxiosError){
