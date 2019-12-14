@@ -9,7 +9,6 @@
         <!-- favicon-->
         <link rel="icon" href="img/logo-3-tpbg.png" type="image/x-icon"/>
         <!-- CSS -->
-        
         <link rel="stylesheet" href="bundle.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
@@ -236,17 +235,13 @@
         <script src="bundle.js"></script>
         
         <script>
-            //import {SetName} from "./position"
             function allLetter(inputtxt)
             { 
                 var letters = /^[A-Za-z]+$/;
                 if(inputtxt.value.match(letters))
                 {
-                    var urlParams = new URLSearchParams(window.location.inputName);
-                    console.log(urlParams)
                     return true;
-                } 
-                
+                }
                 else
                 {
                     event.preventDefault();

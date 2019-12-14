@@ -2131,6 +2131,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
+/* export class NameSetter{
+    static playerConfirmedName: string
+} */
+/* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
+ConfirmNameButton.addEventListener("click", SetName)
+
+function SetName()
+{
+    console.log("BLIVER METODEN TRICKET-JA")
+    let playerName: HTMLInputElement = <HTMLInputElement> document.getElementById('inputName')
+    let playerBox: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+    playerBox.innerHTML = playerName.value
+    console.log(playerBox)
+    //NameSetter.playerConfirmedName = playerName.value
+}
+ */
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
@@ -2167,7 +2183,7 @@ function addScoreToTable(res, ele) {
         }
     });
 }
-
+ //, SetName
 
 
 /***/ }),
@@ -2181,16 +2197,11 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
-/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
-//import {AxiosGetSwingData} from './position'
-
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
 /* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 
-
+//import {AxiosGetSwingData} from './position'
 
 
 Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
