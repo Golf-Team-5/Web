@@ -15,6 +15,12 @@ interface Player {
 
 }
 
+// Sætter spiller navnet i spillerboksen
+let welcome: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+let playerName = localStorage.getItem("pName")
+welcome.innerHTML = playerName
+
+
 /* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
 
 const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");

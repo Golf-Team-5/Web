@@ -2131,9 +2131,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
-/* export class NameSetter{
+/*  export class NameSetter{
     static playerConfirmedName: string
-} */
+}  */
 /* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
 ConfirmNameButton.addEventListener("click", SetName)
 
@@ -2210,6 +2210,13 @@ Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
 Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
+// Får fat i det navn som vælges og gemmer det i en local storage variabel
+var pNameInput = document.getElementById('usernameInput');
+var confirmName = document.getElementById('ConfirmNameButton');
+confirmName.addEventListener("click", function () {
+    // Sætter key: pName til value: pNameInput.value | key-value par -> Henter den igen med getItem + key: getItem("pName")
+    localStorage.setItem("pName", pNameInput.value);
+});
 
 
 /***/ }),
@@ -2229,6 +2236,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
 
 
+// Sætter spiller navnet i spillerboksen
+var welcome = document.getElementById('WelcomePlayer');
+var playerName = localStorage.getItem("pName");
+welcome.innerHTML = playerName;
 /* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
 
 const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");

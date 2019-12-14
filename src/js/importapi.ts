@@ -10,9 +10,9 @@ interface IScore {
     playerScore: number;
 }
 
-/* export class NameSetter{
+/*  export class NameSetter{
     static playerConfirmedName: string
-} */
+}  */
 
 /* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
 ConfirmNameButton.addEventListener("click", SetName)
@@ -68,7 +68,6 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
 
     res.data.forEach((score: IScore) => {
 
-        
 
         if (i <= 5) { 
             let row = ele.insertRow(-1)
