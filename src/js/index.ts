@@ -21,7 +21,7 @@ axiosGet();
 let pNameInput: HTMLInputElement = <HTMLInputElement> document.getElementById('usernameInput')
 let confirmName: HTMLInputElement = <HTMLInputElement> document.getElementById('ConfirmNameButton')
 confirmName.addEventListener("click", () => {
-    // Sætter key: pName til value: pNameInput.value | key-value par -> Henter den igen med getItem + key: getItem("pName")
+    // Sætter key: pName til value: pNameInput.value | (key-value par) -> Henter den igen med getItem + key: getItem("pName")
     localStorage.setItem("pName", pNameInput.value)
 })
 

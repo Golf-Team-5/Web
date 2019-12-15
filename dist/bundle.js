@@ -2150,7 +2150,8 @@ function SetName()
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
+    var test = "http://localhost:64005/api/players";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test, {})
         .then(function (response) {
         // Content Area
         var leaderboardTable = document.getElementById('LeaderTableModal');
@@ -2177,8 +2178,8 @@ function addScoreToTable(res, ele) {
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             cell1.innerHTML = String(i);
-            cell2.innerHTML = score.playerName;
-            cell3.innerHTML = String(score.playerScore);
+            cell2.innerHTML = score.name;
+            cell3.innerHTML = String(score.score);
             i += 1;
         }
     });
@@ -2214,7 +2215,7 @@ Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 var pNameInput = document.getElementById('usernameInput');
 var confirmName = document.getElementById('ConfirmNameButton');
 confirmName.addEventListener("click", function () {
-    // Sætter key: pName til value: pNameInput.value | key-value par -> Henter den igen med getItem + key: getItem("pName")
+    // Sætter key: pName til value: pNameInput.value | (key-value par) -> Henter den igen med getItem + key: getItem("pName")
     localStorage.setItem("pName", pNameInput.value);
 });
 
@@ -2257,6 +2258,7 @@ btnSubmitName.addEventListener("click", SetName) */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
+var test = "http://localhost:64005/api/players";
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
@@ -2269,7 +2271,7 @@ var totalHits = 0;
 var totalDistance = 0;
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 function GetHit() {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test + '/hit')
         .then(function (response) {
         if (totalDistance > 0) {
             // GetEvent skal hente en random event fra eventList.
@@ -2365,6 +2367,8 @@ function EndScore() {
     //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pName.innerHTML = playerName;
+    // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
 }
