@@ -2150,7 +2150,7 @@ function SetName()
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-    //let test: string = "http://localhost:64005/api/players"
+
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
         // Content Area
@@ -2296,7 +2296,7 @@ function GetHit() {
 }
 function PostPlayer(player) {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.post(Uri + "/PostPlayerScore", {
-        //Playername: player.Playername,
+        Playername: player.PlayerName,
         PlayerSwings: player.PlayerSwings,
         PlayerScore: player.PlayerScore,
     })
@@ -2357,22 +2357,25 @@ function EndScore() {
     var pBtnSkip = document.getElementById('SkipBtn');
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits);
-    //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
-    console.log("Name is: " + finalScore);
-    //console.log("Navn Er: " + playerName.value)
-    var PlayerForDatabase = {
-        Playername: String("PER"),
-        PlayerSwings: Number(totalHits),
-        PlayerScore: Number(finalScore),
-    };
-    console.log("PlayerDatabase :" + finalScore);
-    //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
     pName.innerHTML = playerName;
     // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
+}
+var postButton = document.getElementById("SkipDoneBtn");
+postButton.addEventListener("click", postScore);
+function postScore() {
+    console.log("Playername is: " + playerName);
+    console.log("score is: " + finalScore);
+    console.log("total swings are: " + totalHits);
+    var PlayerForDatabase = {
+        PlayerName: String(playerName),
+        PlayerSwings: Number(totalHits),
+        PlayerScore: Number(finalScore),
+    };
+    PostPlayer(PlayerForDatabase);
 }
 // Hvis total længde af alle slag er over banens længde: Du vandt!
 function CHeckIfCourseIsDone() {

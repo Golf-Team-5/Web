@@ -1,5 +1,6 @@
-import axios, {AxiosResponse, AxiosError} from '../../node_modules/axios/index'
 
+import axios, {AxiosResponse, AxiosError} from '../../node_modules/axios/index'
+// Liste med scenarier, de 8 første er scenarier der påvirker spillet, mens de sidste 8 er almendelige slag.
 let  eventList:string[]= 
 [
     "Du står fuld fokuseret og begynder at tag bevægelserne i at gøre klar til at svinge din golfkølle. Du holder øje med kun golfkuglen nu og skal lige til at svinge golfkøllen, MEN du finder i øjenkrogen et lille egern!<br>...<br>  I det mister du alt form for koncentration samt du svinger golfkøllen.",
@@ -19,6 +20,7 @@ let  eventList:string[]=
     "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
     "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang."
 ]
+// Liste med billeder filer, der er forbundet sammen med scenarierne.
 let imageUrilist:string[]=
 [
     "./img/msg-hit-a-pidgen.png",
@@ -26,13 +28,14 @@ let imageUrilist:string[]=
     "./img/msg-Eagle-steales-the-ball.jpg",
     "./img/msg-stickman-misses.jpg",
     "./img/msg-seagull-with-golfball.jpg",
-    "./img/msg-vind-takes-the-ball.jpg",
-    "./img/msg-golf-hole-in-one.jpg",
+    "./img/golf-course-bg.jpg",
+    "./img/",
     "./img/msg-moon.jpg",
     "./img/golf-course-bg.jpg"
 ]
+// Funktionen bruger getRandomInt til at få et tal som bruges til at hente den tilknyttet scenerie og billede.
 export function GetEvent(){
-    console.log("geteevent")
+    
     let eventOutput: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("event")
     let eventImage: HTMLImageElement = <HTMLImageElement> document.getElementById('MsgBoxImg')
     let index:number = getRandomInt(0,eventList.length)
@@ -46,7 +49,7 @@ export function GetEvent(){
 
 }
 
-
+// Funktion der generer et tilfældigt tal mellem minimumværdien og maximumværdien.
 function getRandomInt(min:number, max:number) {
     min = Math.ceil(min);
     max = Math.floor(max);

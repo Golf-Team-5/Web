@@ -9,7 +9,7 @@ import {GetEvent} from "./events"
 
 interface Player {
 
-    Playername: string;
+    PlayerName: string;
     PlayerSwings: number;
     PlayerScore: number;
 
@@ -106,7 +106,7 @@ function PostPlayer(player: Player)
 axios.post(Uri+"/PostPlayerScore", {
     
         
-            //Playername: player.Playername,
+            Playername: player.PlayerName ,
             PlayerSwings: player.PlayerSwings,
             PlayerScore: player.PlayerScore,
         
@@ -199,32 +199,37 @@ function EndScore() {
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits)
 
-    //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
-    console.log("Name is: " + finalScore)
-    
-    //console.log("Navn Er: " + playerName.value)
-    
-    let PlayerForDatabase: Player = {
-        Playername: String("PER"),
-        PlayerSwings: Number(totalHits),
-        PlayerScore: Number(finalScore),
-        
-    }; 
-    console.log("PlayerDatabase :" + finalScore)
-
-    //PostPlayer(PlayerForDatabase);
-
     // udskriver vores antal slag
-    pSwing.innerHTML = String(totalHits);
+    pSwing.innerHTML = String(totalHits); 
     pName.innerHTML = playerName
-
+ 
     // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
 }
 
+let postButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("SkipDoneBtn")
+postButton.addEventListener("click", postScore)
+
+function postScore()
+{
+    console.log("Playername is: " + playerName)
+    console.log("score is: " + finalScore)
+    console.log("total swings are: " + totalHits)
+
+    let PlayerForDatabase: Player = {
+        PlayerName: String(playerName),
+        PlayerSwings: Number(totalHits),
+        PlayerScore: Number(finalScore),
+        
+    };
+
+    PostPlayer(PlayerForDatabase);
+ 
+}
+
 // Hvis total længde af alle slag er over banens længde: Du vandt!
-function CHeckIfCourseIsDone() { 
+function CHeckIfCourseIsDone() {  
     if(totalDistance >= courseLength){        
         EndCourse()        
     }
