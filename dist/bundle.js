@@ -2151,7 +2151,7 @@ function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
     var test = "http://localhost:64005/api/players";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test, {})
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
         // Content Area
         var leaderboardTable = document.getElementById('LeaderTableModal');
@@ -2178,8 +2178,8 @@ function addScoreToTable(res, ele) {
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             cell1.innerHTML = String(i);
-            cell2.innerHTML = score.name;
-            cell3.innerHTML = String(score.score);
+            cell2.innerHTML = score.playerName;
+            cell3.innerHTML = String(score.playerScore);
             i += 1;
         }
     });
@@ -2273,7 +2273,7 @@ var totalHits = 0;
 var totalDistance = 0;
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 function GetHit() {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test + '/hit')
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
         .then(function (response) {
         if (totalDistance > 0) {
             // GetEvent skal hente en random event fra eventList.
@@ -2296,7 +2296,7 @@ function GetHit() {
 }
 function PostPlayer(player) {
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.post(Uri + "/PostPlayerScore", {
-        //Playername: player.Playername,
+        Playername: player.PlayerName,
         PlayerSwings: player.PlayerSwings,
         PlayerScore: player.PlayerScore,
     })
@@ -2357,22 +2357,25 @@ function EndScore() {
     var pBtnSkip = document.getElementById('SkipBtn');
     // Kalder vores metode fra score.ts med score dataerne allerede printet ud. 3 = vores par for banen
     GetScoreAndNoOfSwings(3, totalHits);
-    //console.log("PlayerName is :" + NameSetter.playerConfirmedName)
-    console.log("Name is: " + finalScore);
-    //console.log("Navn Er: " + playerName.value)
-    var PlayerForDatabase = {
-        Playername: String("PER"),
-        PlayerSwings: Number(totalHits),
-        PlayerScore: Number(finalScore),
-    };
-    console.log("PlayerDatabase :" + finalScore);
-    //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
     pName.innerHTML = playerName;
     // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
+}
+var postButton = document.getElementById("SkipDoneBtn");
+postButton.addEventListener("click", printScore);
+function printScore() {
+    console.log("Playername is: " + playerName);
+    console.log("score is: " + finalScore);
+    console.log("total swings are: " + totalHits);
+    var PlayerForDatabase = {
+        PlayerName: String(playerName),
+        PlayerSwings: Number(totalHits),
+        PlayerScore: Number(finalScore),
+    };
+    PostPlayer(PlayerForDatabase);
 }
 // Hvis total længde af alle slag er over banens længde: Du vandt!
 function CHeckIfCourseIsDone() {
