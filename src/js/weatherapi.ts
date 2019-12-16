@@ -93,7 +93,7 @@ function Weather(description:string):string
             weatherImage.src = "./img/Weather-icons-cloud.png"
             return "Overskyet";
         case "overcast clouds":
-            weatherImage.src = "./img/Weather-icons-heavy-rain.png"
+            weatherImage.src = "./img/Weather-icons-grey-sky.png"
             return "Gråvejr"
         case "shover rain":
             weatherImage.src = "./img/Weather-icons-rain.png"

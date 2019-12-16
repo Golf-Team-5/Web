@@ -2067,6 +2067,7 @@ module.exports = __webpack_require__.p + "index.htm";
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetEvent", function() { return GetEvent; });
+// Liste med scenarier, de 8 første er scenarier der påvirker spillet, mens de sidste 8 er almendelige slag.
 var eventList = [
     "Du står fuld fokuseret og begynder at tag bevægelserne i at gøre klar til at svinge din golfkølle. Du holder øje med kun golfkuglen nu og skal lige til at svinge golfkøllen, MEN du finder i øjenkrogen et lille egern!<br>...<br>  I det mister du alt form for koncentration samt du svinger golfkøllen.",
     "Fast besluttet på at dette bliver dit heldige slag, så kigger du kort på golfkuglen og derefter flaget til golfhullet, du bemærkede at der skulle virkelig kraft på dit næste slag. Du begynder at lave bevægelserne til at tag svinget og slår golfkuglen med alt din kraft!<br>…<br> Du ser spændt ud over golfbanen i håb om den blev skudt langt nok, men du kan ikke se den. Du tager et kort blik ned, hvor golfkuglen er skudt ned i jorden.",
@@ -2085,19 +2086,20 @@ var eventList = [
     "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang.",
     "Du ramte golfkuglen uden problemer og den fløj som den skulle <br>…<br> Denne gang."
 ];
+// Liste med billeder filer, der er forbundet sammen med scenarierne.
 var imageUrilist = [
     "./img/msg-hit-a-pidgen.png",
     "./img/msg-earth.jpg",
     "./img/msg-Eagle-steales-the-ball.jpg",
     "./img/msg-stickman-misses.jpg",
     "./img/msg-seagull-with-golfball.jpg",
-    "./img/msg-vind-takes-the-ball.jpg",
-    "./img/msg-golf-hole-in-one.jpg",
+    "./img/golf-course-bg.jpg",
+    "./img/",
     "./img/msg-moon.jpg",
     "./img/golf-course-bg.jpg"
 ];
+// Funktionen bruger getRandomInt til at få et tal som bruges til at hente den tilknyttet scenerie og billede.
 function GetEvent() {
-    console.log("geteevent");
     var eventOutput = document.getElementById("event");
     var eventImage = document.getElementById('MsgBoxImg');
     var index = getRandomInt(0, eventList.length);
@@ -2109,6 +2111,7 @@ function GetEvent() {
         eventImage.src = imageUrilist[8];
     }
 }
+// Funktion der generer et tilfældigt tal mellem minimumværdien og maximumværdien.
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
