@@ -16,6 +16,10 @@ interface IWeather {
             description: string
         }
     }
+    wind: {
+        deg: number
+        speed: number
+    }
 }
 // Axiosfunktion til at hente api'en med en Get.
 // Som parameter bruges id til at hente byen, units til at hente celsius grader og appid er vores apikey.
@@ -45,10 +49,29 @@ function AddWeatherToPage(res: AxiosResponse<IWeather>) {
     let cityName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('city-name')
     let cityTemperature: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('city-temperature')
     let cityWeather: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('city-weather')
+    let cityWind: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('city-wind')
 
     cityName.innerHTML = res.data.name
     cityTemperature.innerHTML = String(Math.floor(res.data.main.temp))
     cityWeather.innerHTML = Weather(res.data.weather[0].description)
+    cityWind.innerHTML = WindDirection(res.data.wind.deg) + " " + res.data.wind.speed + " " + "m/s"
+}
+
+function WindDirection(direction: number): string {
+    
+     
+    switch (true) {
+        case (direction < 45 && direction > 345):
+            return "~ Nord"
+        case (direction > 45 && direction < 135):
+            return "~Øst"        
+        case (direction > 135 && direction < 225):
+            return "~Syd"
+        case (direction > 225 && direction < 315):
+            return "~Vest"
+        default:
+            break;
+    }
 }
 
 // Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
