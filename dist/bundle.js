@@ -2365,8 +2365,8 @@ function EndScore() {
     pBtnSkip.style.display = "none";
 }
 var postButton = document.getElementById("SkipDoneBtn");
-postButton.addEventListener("click", printScore);
-function printScore() {
+postButton.addEventListener("click", postScore);
+function postScore() {
     console.log("Playername is: " + playerName);
     console.log("score is: " + finalScore);
     console.log("total swings are: " + totalHits);

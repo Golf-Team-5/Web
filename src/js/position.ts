@@ -209,9 +209,9 @@ function EndScore() {
 }
 
 let postButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("SkipDoneBtn")
-postButton.addEventListener("click", printScore)
+postButton.addEventListener("click", postScore)
 
-function printScore()
+function postScore()
 {
     console.log("Playername is: " + playerName)
     console.log("score is: " + finalScore)
