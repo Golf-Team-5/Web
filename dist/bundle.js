@@ -2131,10 +2131,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
 
+/*  export class NameSetter{
+    static playerConfirmedName: string
+}  */
+/* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
+ConfirmNameButton.addEventListener("click", SetName)
+
+function SetName()
+{
+    console.log("BLIVER METODEN TRICKET-JA")
+    let playerName: HTMLInputElement = <HTMLInputElement> document.getElementById('inputName')
+    let playerBox: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+    playerBox.innerHTML = playerName.value
+    console.log(playerBox)
+    //NameSetter.playerConfirmedName = playerName.value
+}
+ */
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
+    var test = "http://localhost:64005/api/players";
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test, {})
         .then(function (response) {
         // Content Area
         var leaderboardTable = document.getElementById('LeaderTableModal');
@@ -2161,13 +2178,13 @@ function addScoreToTable(res, ele) {
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             cell1.innerHTML = String(i);
-            cell2.innerHTML = score.playerName;
-            cell3.innerHTML = String(score.playerScore);
+            cell2.innerHTML = score.name;
+            cell3.innerHTML = String(score.score);
             i += 1;
         }
     });
 }
-
+ //, SetName
 
 
 /***/ }),
@@ -2181,24 +2198,26 @@ function addScoreToTable(res, ele) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
-/* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
-/* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
-//import {AxiosGetSwingData} from './position'
-
 /* harmony import */ var _importapi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./importapi */ "./src/js/importapi.ts");
 /* harmony import */ var _position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./position */ "./src/js/position.ts");
 /* harmony import */ var _weatherapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherapi */ "./src/js/weatherapi.ts");
 
+//import {AxiosGetSwingData} from './position'
 
 
-
-Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
+_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"];
 //axiosGet();
 //AxiosGetSwingData();
 Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
 Object(_importapi__WEBPACK_IMPORTED_MODULE_0__["axiosGet"])();
 //AxiosGetSwingData();
+// Får fat i det navn som vælges og gemmer det i en local storage variabel
+var pNameInput = document.getElementById('usernameInput');
+var confirmName = document.getElementById('ConfirmNameButton');
+confirmName.addEventListener("click", function () {
+    // Sætter key: pName til value: pNameInput.value | (key-value par) -> Henter den igen med getItem + key: getItem("pName")
+    localStorage.setItem("pName", pNameInput.value);
+});
 
 
 /***/ }),
@@ -2218,6 +2237,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./src/js/events.ts");
 
 
+// Sætter spiller navnet i spillerboksen
+var welcome = document.getElementById('WelcomePlayer');
+var playerName = localStorage.getItem("pName");
+welcome.innerHTML = playerName;
 /* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
 
 const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");
@@ -2235,11 +2258,14 @@ btnSubmitName.addEventListener("click", SetName) */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
+var test = "http://localhost:64005/api/players";
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
 var getDataBtn = document.getElementById('ScoreBtn');
 getDataBtn.addEventListener("click", GetHit);
+// Vil se om vi kan køre vores "Næste slag automatisk, dvs. hvis der findes en 
+// værdi i databasen, så hent den. Det er den værdi som kommer fra Pi'en"
 // her skrives banelængden ud
 var course = document.getElementById('course-lenght');
 course.innerHTML = String(courseLength);
@@ -2247,7 +2273,7 @@ var totalHits = 0;
 var totalDistance = 0;
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 function GetHit() {
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri)
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(test + '/hit')
         .then(function (response) {
         if (totalDistance > 0) {
             // GetEvent skal hente en random event fra eventList.
@@ -2343,6 +2369,8 @@ function EndScore() {
     //PostPlayer(PlayerForDatabase);
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pName.innerHTML = playerName;
+    // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
 }

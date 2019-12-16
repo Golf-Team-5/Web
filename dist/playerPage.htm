@@ -42,16 +42,14 @@
                <!--Weather picture-->
                 <div class="col-md-12 col-lg-1 col-sm-12">
                     <div class="col-md-2 col-lg-2 col-sm-12" style="min-height: 90vh">
-                        <div>
-                            
-                            <img id="weather-img" class="img-responsive float" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
-                            
-                            <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
-                                <b><span id="city-name"></span><br>
-                                Temperatur: <span id="city-temperature"></span>&#176; C<br>
-                                <span id="city-weather"></span>
-                            </b></p>    
-                        </div>
+                    <div>
+                    <img id="weather-img" class="img-responsive" src="/img/Weather-icons-cloud-sun.png" alt="Weather icon"/>
+                    <p style="font-size: 17px; color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+                        <b><span id="city-name"></span><br>
+                        <span id="city-temperature"></span>&#176;C
+                        <span id="city-weather"></span>
+                    </b></p>    
+                </div>
                     </div>
                 </div>
                 <div id="MsgBoxAround" class="col-md-12 col-lg-8 col-sm-12 float">
@@ -70,8 +68,10 @@
                             
                         </div>
                         <div class="col-md-7 col-lg-7 col-sm-12">
+                              
                             <div id="MsgOutput">
-                                <p id="WelcomePlayer"></p>
+                                    
+                                <p>Spiller: <span id="WelcomePlayer"></span></p>
                                 <p id="event">
                                     Du er blevet inviteret til en oplevelse som du vil huske i årvis. Målet er at du skal komme ud som nr. 1 og bringe ærer til din familie. Du vil blive udsat for forhindringer, katastrofer, gudernes vrede og velsignelse. Kan du leve op til disse forventninger?! <br>VÆRSGO OG GIV DET ET FORSØG!
 
@@ -181,7 +181,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                        <!--         <tr>
                                     <td>1</td>
                                     <td>STR</td>
                                     <td>"3333"</td>
@@ -195,7 +195,7 @@
                                     <td>3</td>
                                     <td>BOO</td>
                                     <td>TRUE</td>
-                                </tr>
+                                </tr> -->
                             </tbody>                        
                         </table>  
                     </div>
@@ -330,6 +330,11 @@
             </div> 
     
         <div id="positionFromHole"></div>
+
+        <!--Ubrugte elementer-->
+        <div id="usernameInput" class="display-none"></div>
+        <div id="ConfirmNameButton" class="display-none"></div>
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>      
@@ -342,7 +347,5 @@
                 });
             });
         </script>  -->
-
-        
     </body>
 </html>

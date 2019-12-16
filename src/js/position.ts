@@ -15,6 +15,12 @@ interface Player {
 
 }
 
+// Sætter spiller navnet i spillerboksen
+let welcome: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById('WelcomePlayer')
+let playerName = localStorage.getItem("pName")
+welcome.innerHTML = playerName
+
+
 /* let yourNewString = yourHTMLString.replace('/<DashboardName>/g', dashboardName);
 
 const inputName: HTMLInputElement = <HTMLInputElement> document.getElementById("usernameInput");
@@ -36,6 +42,8 @@ btnSubmitName.addEventListener("click", SetName) */
 
 // Uri til et slag fra Rest Service
 const Uri : string= "http://localhost:52549/api/swingdata"
+let test: string = "http://localhost:64005/api/players"
+
 
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 let courseLength: number = 1000
@@ -43,6 +51,13 @@ let courseLength: number = 1000
 // reference til Næste slag knappen, samt dens "listener"
 const getDataBtn: HTMLButtonElement = <HTMLButtonElement> document.getElementById('ScoreBtn')
 getDataBtn.addEventListener("click", GetHit)
+
+
+// Vil se om vi kan køre vores "Næste slag automatisk, dvs. hvis der findes en 
+// værdi i databasen, så hent den. Det er den værdi som kommer fra Pi'en"
+
+
+
 
 // her skrives banelængden ud
 let course: HTMLFontElement = <HTMLFontElement> document.getElementById('course-lenght')
@@ -56,7 +71,7 @@ let totalDistance:number = 0;
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 export function GetHit ()  {
     
-    axios.get(Uri)
+    axios.get(test + '/hit')
     .then (function (response: AxiosResponse) {
         
         if(totalDistance > 0){
@@ -201,6 +216,9 @@ function EndScore() {
 
     // udskriver vores antal slag
     pSwing.innerHTML = String(totalHits);
+    pName.innerHTML = playerName
+
+    // Så knapperne på spil siden forsvinder når en bane er færdig
     pBtnScore.style.display = "none";
     pBtnSkip.style.display = "none";
 }

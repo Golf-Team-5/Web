@@ -5,14 +5,14 @@ import axios, {
 
 interface IScore {
     rank: number;
-    playerName: string;
+    name: string;
     playerSwings: number;
-    playerScore: number;
+    score: number;
 }
 
-/* export class NameSetter{
+/*  export class NameSetter{
     static playerConfirmedName: string
-} */
+}  */
 
 /* let ConfirmNameButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("ConfirmNameButton")
 ConfirmNameButton.addEventListener("click", SetName)
@@ -32,9 +32,9 @@ function axiosGet(){
 
      // Test api | returnerer en liste af Player med name og score
     let playerScoresUri: string = "http://localhost:52549/api/swingdata/getleaderboard"
+    let test: string = "http://localhost:64005/api/players"
 
-
-    axios.get<IScore[]>(playerScoresUri, {
+    axios.get<IScore[]>(test, {
 
     })
     .then(function(response: AxiosResponse<IScore[]>) {
@@ -68,7 +68,6 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
 
     res.data.forEach((score: IScore) => {
 
-        
 
         if (i <= 5) { 
             let row = ele.insertRow(-1)
@@ -77,8 +76,8 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
             let cell3 = row.insertCell(2)
         
             cell1.innerHTML = String(i)
-            cell2.innerHTML = score.playerName
-            cell3.innerHTML = String(score.playerScore)
+            cell2.innerHTML = score.name
+            cell3.innerHTML = String(score.score)
             i += 1
         } 
         
