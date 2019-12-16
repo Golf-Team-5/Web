@@ -52,6 +52,13 @@ let courseLength: number = 1000
 const getDataBtn: HTMLButtonElement = <HTMLButtonElement> document.getElementById('ScoreBtn')
 getDataBtn.addEventListener("click", GetHit)
 
+
+// Vil se om vi kan køre vores "Næste slag automatisk, dvs. hvis der findes en 
+// værdi i databasen, så hent den. Det er den værdi som kommer fra Pi'en"
+
+
+
+
 // her skrives banelængden ud
 let course: HTMLFontElement = <HTMLFontElement> document.getElementById('course-lenght')
 course.innerHTML = String(courseLength) 

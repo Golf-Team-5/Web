@@ -2205,7 +2205,7 @@ __webpack_require__.r(__webpack_exports__);
 //import {AxiosGetSwingData} from './position'
 
 
-Object(_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"])();
+_position__WEBPACK_IMPORTED_MODULE_1__["GetHit"];
 //axiosGet();
 //AxiosGetSwingData();
 Object(_weatherapi__WEBPACK_IMPORTED_MODULE_2__["GetWeather"])();
@@ -2264,6 +2264,8 @@ var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
 var getDataBtn = document.getElementById('ScoreBtn');
 getDataBtn.addEventListener("click", GetHit);
+// Vil se om vi kan køre vores "Næste slag automatisk, dvs. hvis der findes en 
+// værdi i databasen, så hent den. Det er den værdi som kommer fra Pi'en"
 // her skrives banelængden ud
 var course = document.getElementById('course-lenght');
 course.innerHTML = String(courseLength);

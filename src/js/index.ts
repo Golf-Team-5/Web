@@ -4,7 +4,7 @@ import {GetHit} from './position'
 import {GetWeather} from './weatherapi'
 
 
-GetHit()
+GetHit
 
 
 //axiosGet();
