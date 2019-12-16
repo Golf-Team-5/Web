@@ -2153,7 +2153,7 @@ function SetName()
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-    var test = "http://localhost:64005/api/players";
+
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
         // Content Area
@@ -2261,7 +2261,7 @@ btnSubmitName.addEventListener("click", SetName) */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
 var Uri = "http://localhost:52549/api/swingdata";
-var test = "http://localhost:64005/api/players";
+//let test: string = "http://localhost:64005/api/players"
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
 // reference til Næste slag knappen, samt dens "listener"
@@ -2430,9 +2430,25 @@ function AddWeatherToPage(res) {
     var cityName = document.getElementById('city-name');
     var cityTemperature = document.getElementById('city-temperature');
     var cityWeather = document.getElementById('city-weather');
+    var cityWind = document.getElementById('city-wind');
     cityName.innerHTML = res.data.name;
     cityTemperature.innerHTML = String(Math.floor(res.data.main.temp));
     cityWeather.innerHTML = Weather(res.data.weather[0].description);
+    cityWind.innerHTML = WindDirection(res.data.wind.deg) + " " + res.data.wind.speed + " " + "m/s";
+}
+function WindDirection(direction) {
+    switch (true) {
+        case (direction < 45 && direction > 345):
+            return "~ Nord";
+        case (direction > 45 && direction < 135):
+            return "~Øst";
+        case (direction > 135 && direction < 225):
+            return "~Syd";
+        case (direction > 225 && direction < 315):
+            return "~Vest";
+        default:
+            break;
+    }
 }
 // Hjælpemetode til at vælge billeder som viser nuværende vejr i forhold til api'en.
 function Weather(description) {
