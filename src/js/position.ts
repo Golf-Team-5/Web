@@ -42,7 +42,7 @@ btnSubmitName.addEventListener("click", SetName) */
 
 // Uri til et slag fra Rest Service
 const Uri : string= "http://localhost:52549/api/swingdata"
-let test: string = "http://localhost:64005/api/players"
+//let test: string = "http://localhost:64005/api/players"
 
 
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
@@ -57,7 +57,7 @@ getDataBtn.addEventListener("click", GetHit)
 // værdi i databasen, så hent den. Det er den værdi som kommer fra Pi'en"
 
 
-
+ 
 
 // her skrives banelængden ud
 let course: HTMLFontElement = <HTMLFontElement> document.getElementById('course-lenght')
@@ -71,7 +71,7 @@ let totalDistance:number = 0;
 // funktionen henter et slag fra Rest Service ved hjælp af Axios
 export function GetHit ()  {
     
-    axios.get(test + '/hit')
+    axios.get(Uri)
     .then (function (response: AxiosResponse) {
         
         if(totalDistance > 0){

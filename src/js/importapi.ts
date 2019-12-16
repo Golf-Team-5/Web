@@ -5,9 +5,9 @@ import axios, {
 
 interface IScore {
     rank: number;
-    name: string;
+    playerName: string;
     playerSwings: number;
-    score: number;
+    playerScore: number;
 }
 
 /*  export class NameSetter{
@@ -32,9 +32,9 @@ function axiosGet(){
 
      // Test api | returnerer en liste af Player med name og score
     let playerScoresUri: string = "http://localhost:52549/api/swingdata/getleaderboard"
-    let test: string = "http://localhost:64005/api/players"
+    //let test: string = "http://localhost:64005/api/players"
 
-    axios.get<IScore[]>(test, {
+    axios.get<IScore[]>(playerScoresUri, {
 
     })
     .then(function(response: AxiosResponse<IScore[]>) {
@@ -76,8 +76,8 @@ function addScoreToTable(res: AxiosResponse<IScore[]>, ele: HTMLTableElement){
             let cell3 = row.insertCell(2)
         
             cell1.innerHTML = String(i)
-            cell2.innerHTML = score.name
-            cell3.innerHTML = String(score.score)
+            cell2.innerHTML = score.playerName
+            cell3.innerHTML = String(score.playerScore)
             i += 1
         } 
         
