@@ -2152,7 +2152,9 @@ function SetName()
  */
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
-    var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
+
+    var playerScoresUri = "https://restrngolfservice.azurewebsites.net/api/swingdata/getleaderboard";
+
     //let test: string = "http://localhost:64005/api/players"
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
@@ -2260,7 +2262,9 @@ btnSubmitName.addEventListener("click", SetName) */
     } */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
-var Uri = "http://localhost:52549/api/swingdata";
+
+var Uri = "https://restrngolfservice.azurewebsites.net/api/swingdata";
+
 //let test: string = "http://localhost:64005/api/players"
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
@@ -2334,7 +2338,7 @@ var swingCountElement = document.getElementById("swingCount");
 var finalScore;
 function GetScoreAndNoOfSwings(par, hits) {
     console.log(par);
-    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:52549/api/swingdata/GetScore", {
+    _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(Uri + "/GetScore", {
         params: {
             Par: par,
             Hits: hits
@@ -2467,7 +2471,7 @@ function Weather(description) {
             weatherImage.src = "./img/Weather-icons-cloud.png";
             return "Overskyet";
         case "overcast clouds":
-            weatherImage.src = "./img/Weather-icons-heavy-rain.png";
+            weatherImage.src = "./img/Weather-icons-grey-sky.png";
             return "Gråvejr";
         case "shover rain":
             weatherImage.src = "./img/Weather-icons-rain.png";

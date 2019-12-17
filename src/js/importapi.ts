@@ -31,7 +31,9 @@ function axiosGet(){
 
 
      // Test api | returnerer en liste af Player med name og score
-    let playerScoresUri: string = "http://localhost:52549/api/swingdata/getleaderboard"
+
+    let playerScoresUri: string = "https://restrngolfservice.azurewebsites.net/api/swingdata/getleaderboard"
+
     //let test: string = "http://localhost:64005/api/players"
 
     axios.get<IScore[]>(playerScoresUri, {
