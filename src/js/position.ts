@@ -41,7 +41,7 @@ btnSubmitName.addEventListener("click", SetName) */
 
 
 // Uri til et slag fra Rest Service
-const Uri : string= "http://localhost:52549/api/swingdata"
+const Uri : string= "https://restrngolfservice.azurewebsites.net/api/swingdata"
 //let test: string = "http://localhost:64005/api/players"
 
 
@@ -128,7 +128,7 @@ function EndCourse ()  {
     const ActivatedModal: HTMLDivElement = <HTMLDivElement> document.getElementById('nextCourseModal')
   
     
-    
+     
     
 /* 
     ActivateModalBtn.addEventListener("click", () => {
@@ -160,7 +160,7 @@ function GetScoreAndNoOfSwings(par: number, hits: number)
 {
     console.log(par)
     
-    axios.get("http://localhost:52549/api/swingdata/GetScore"  ,{
+    axios.get(Uri +"/GetScore"  ,{
         params: {
             Par:  par,
             Hits: hits
