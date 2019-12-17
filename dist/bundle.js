@@ -2153,7 +2153,7 @@ function SetName()
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
     var playerScoresUri = "http://localhost:52549/api/swingdata/getleaderboard";
-
+    //let test: string = "http://localhost:64005/api/players"
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
         // Content Area
