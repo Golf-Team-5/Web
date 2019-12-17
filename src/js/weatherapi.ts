@@ -62,13 +62,13 @@ function WindDirection(direction: number): string {
      
     switch (true) {
         case (direction < 45 && direction > 345):
-            return "~ Nord"
+            return "fra ~Nord"
         case (direction > 45 && direction < 135):
-            return "~Øst"        
+            return "fra ~Øst"        
         case (direction > 135 && direction < 225):
-            return "~Syd"
+            return "fra ~Syd"
         case (direction > 225 && direction < 315):
-            return "~Vest"
+            return "fra ~Vest"
         default:
             break;
     }

@@ -2152,9 +2152,7 @@ function SetName()
  */
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
-
     var playerScoresUri = "https://restrngolfservice.azurewebsites.net/api/swingdata/getleaderboard";
-
     //let test: string = "http://localhost:64005/api/players"
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
@@ -2262,9 +2260,7 @@ btnSubmitName.addEventListener("click", SetName) */
     } */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
-
 var Uri = "https://restrngolfservice.azurewebsites.net/api/swingdata";
-
 //let test: string = "http://localhost:64005/api/players"
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
@@ -2443,13 +2439,13 @@ function AddWeatherToPage(res) {
 function WindDirection(direction) {
     switch (true) {
         case (direction < 45 && direction > 345):
-            return "~ Nord";
+            return "fra ~Nord";
         case (direction > 45 && direction < 135):
-            return "~Øst";
+            return "fra ~Øst";
         case (direction > 135 && direction < 225):
-            return "~Syd";
+            return "fra ~Syd";
         case (direction > 225 && direction < 315):
-            return "~Vest";
+            return "fra ~Vest";
         default:
             break;
     }

@@ -91,7 +91,7 @@ export function GetHit ()  {
         currentDistance.innerHTML = String(totalDistance)
         
         CHeckIfCourseIsDone()
-       
+        
     })
     // hvis der er en fejl, så opfangere vi fejlbeskeden og udskriver den
     .catch (function (error: AxiosError) {
