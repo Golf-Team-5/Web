@@ -41,7 +41,9 @@ btnSubmitName.addEventListener("click", SetName) */
 
 
 // Uri til et slag fra Rest Service
+
 const Uri : string= "https://restrngolfservice.azurewebsites.net/api/swingdata"
+
 //let test: string = "http://localhost:64005/api/players"
 
 

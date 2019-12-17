@@ -2152,7 +2152,9 @@ function SetName()
  */
 function axiosGet() {
     // Test api | returnerer en liste af Player med name og score
+
     var playerScoresUri = "https://restrngolfservice.azurewebsites.net/api/swingdata/getleaderboard";
+
     //let test: string = "http://localhost:64005/api/players"
     _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(playerScoresUri, {})
         .then(function (response) {
@@ -2260,7 +2262,9 @@ btnSubmitName.addEventListener("click", SetName) */
     } */
 //    console.log("Hej! jeg virker!")} 
 // Uri til et slag fra Rest Service
+
 var Uri = "https://restrngolfservice.azurewebsites.net/api/swingdata";
+
 //let test: string = "http://localhost:64005/api/players"
 // banelængde, senere  kan det statiske tal udskiftes til at vøre mere dynamisk
 var courseLength = 1000;
